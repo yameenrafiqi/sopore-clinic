@@ -73,7 +73,8 @@ export default function Hero() {
         style={{ paddingTop: '80px' }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="">
             {/* Badge */}
             <div
               ref={badgeRef}
@@ -137,7 +138,6 @@ export default function Hero() {
 
             {/* Subtitle */}
             <p
-              ref={subtitleRef}
               className="mb-10 max-w-2xl"
               style={{
                 color: 'var(--text-secondary)',
@@ -211,6 +211,25 @@ export default function Hero() {
               ))}
             </div>
           </div>
+
+            {/* Right column — doctor photo */}
+            <div className="hidden lg:flex justify-center items-center">
+              <div style={{ position: 'relative', width: '100%', maxWidth: '420px' }}>
+                <img
+                  src="/images/mamjan.png"
+                  alt="Dr. Majid"
+                  style={{
+                    width: '100%',
+                    borderRadius: '24px',
+                    boxShadow: '0 24px 60px rgba(26,107,204,0.18)',
+                    objectFit: 'cover',
+                    objectPosition: 'center top',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            </div>
+        </div>
         </div>
 
         {/* Scroll indicator */}
