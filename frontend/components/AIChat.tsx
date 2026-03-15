@@ -175,7 +175,7 @@ export default function AIChat() {
             exit={{ rotate: 90, opacity: 0 }}
             transition={{ duration: 0.15 }}
           >
-            {isOpen ? <X size={20} /> : <Bot size={20} />}
+            {isOpen ? <X size={20} /> : <img src="/images/Gemini Generated Image.png" alt="AI" style={{ width: '34px', height: '34px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />}
           </motion.div>
         </AnimatePresence>
       </motion.button>

@@ -1,6 +1,5 @@
 'use client';
 
-import { MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function WhatsAppButton() {
@@ -21,7 +20,7 @@ export default function WhatsAppButton() {
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.9 }}
     >
-      <MessageCircle size={26} fill="white" style={{ color: 'white' }} />
+      <img src="/images/whatsapp.jpg" alt="WhatsApp" style={{ width: '30px', height: '30px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />
 
       {/* Pulse ring */}
       <motion.div
