@@ -210,10 +210,10 @@ export default function Hero() {
             {/* Trust indicators */}
             <div className="hero-cta flex flex-wrap gap-6 items-center" style={{ opacity: 0 }} suppressHydrationWarning>
               {[
-                { value: '5000+', label: 'Patients Treated' },
+                { value: '30,000+', label: 'Patients Treated' },
                 { value: '4.9★', label: 'Google Rating' },
                 { value: '25+', label: 'Years Experience' },
-                { value: '98%', label: 'Recovery Rate' },
+                { value: '92%', label: 'Recovery Rate' },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center gap-2" suppressHydrationWarning>
                   <span

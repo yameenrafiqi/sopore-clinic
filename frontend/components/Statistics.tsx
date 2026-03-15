@@ -8,7 +8,7 @@ import { Users, Star, Award, TrendingUp, Heart, Clock } from 'lucide-react';
 const stats = [
   {
     icon: Users,
-    value: 5000,
+    value: 30000,
     suffix: '+',
     label: 'Patients Treated',
     description: 'Lives transformed through advanced physiotherapy',
@@ -33,7 +33,7 @@ const stats = [
   },
   {
     icon: TrendingUp,
-    value: 98,
+    value: 92,
     suffix: '%',
     label: 'Recovery Success Rate',
     description: 'Patients report significant pain relief',
@@ -49,7 +49,7 @@ const stats = [
   },
   {
     icon: Clock,
-    value: 99,
+    value: 97,
     suffix: '%',
     label: 'Appointment Adherence',
     description: 'Reliable same-day booking confirmation',
