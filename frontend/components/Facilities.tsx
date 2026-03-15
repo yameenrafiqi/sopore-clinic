@@ -287,10 +287,10 @@ export default function Facilities() {
           >
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
-              style={{ background: 'rgba(10,132,255,0.1)', border: '1px solid rgba(10,132,255,0.2)' }}
+              style={{ background: 'var(--primary-subtle)', border: '1px solid var(--border-blue)' }}
             >
-              <Activity size={14} style={{ color: '#0A84FF' }} />
-              <span style={{ color: '#0A84FF', fontSize: '13px', fontWeight: 600 }}>
+              <Activity size={14} style={{ color: 'var(--primary)' }} />
+              <span style={{ color: 'var(--primary)', fontSize: '13px', fontWeight: 600 }}>
                 World-class Equipment
               </span>
             </div>
@@ -301,10 +301,7 @@ export default function Facilities() {
               Our{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: 'var(--primary)',
                 }}
               >
                 Facilities

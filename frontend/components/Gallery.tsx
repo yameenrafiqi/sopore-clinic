@@ -114,12 +114,12 @@ function LightboxModal({
         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="w-[90vw] max-w-3xl rounded-3xl overflow-hidden relative" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div className="w-[90vw] max-w-3xl rounded-3xl overflow-hidden relative" style={{ border: '1px solid var(--border)' }}>
           <img
             src={item.src}
             alt={item.alt}
             className="w-full max-h-[80vh] object-contain"
-            style={{ background: '#0a0e1a' }}
+            style={{ background: '#f7f9fc' }}
           />
           <div
             className="absolute bottom-0 left-0 right-0 px-6 py-4"

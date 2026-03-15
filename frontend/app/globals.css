@@ -8,40 +8,52 @@
    CSS Custom Properties (Design Tokens)
    ============================================================ */
 :root {
-  --primary: #0A84FF;
-  --primary-dark: #0068cc;
-  --primary-light: #3395ff;
-  --cyan-glow: #00d4ff;
+  --primary: #1a6bcc;
+  --primary-dark: #145ab8;
+  --primary-light: #3d85e0;
+  --primary-subtle: #eef4fd;
+  --accent: #0ea5e9;
   --bg-primary: #ffffff;
-  --bg-secondary: #f8faff;
-  --text-primary: #0d1b3e;
-  --text-secondary: #4a5568;
-  --text-muted: #718096;
-  --border: rgba(10, 132, 255, 0.15);
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.15);
+  --bg-secondary: #f7f9fc;
+  --bg-tertiary: #eef4fd;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border: #e5e9f0;
+  --border-blue: rgba(26,107,204,0.2);
+  --card-bg: #ffffff;
+  --glass-bg: rgba(255,255,255,0.9);
+  --glass-border: #e5e9f0;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.1);
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Dark mode overridden — forced light theme */
 .dark {
-  --primary: #0A84FF;
-  --primary-dark: #0068cc;
-  --primary-light: #3395ff;
-  --cyan-glow: #00d4ff;
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #0d1b3e;
-  --text-primary: #f0f4ff;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --border: rgba(10, 132, 255, 0.2);
-  --card-bg: rgba(13, 27, 62, 0.8);
-  --glass-bg: rgba(13, 27, 62, 0.4);
-  --glass-border: rgba(10, 132, 255, 0.15);
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.6);
+  --primary: #1a6bcc;
+  --primary-dark: #145ab8;
+  --primary-light: #3d85e0;
+  --primary-subtle: #eef4fd;
+  --accent: #0ea5e9;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f9fc;
+  --bg-tertiary: #eef4fd;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --border: #e5e9f0;
+  --border-blue: rgba(26,107,204,0.2);
+  --card-bg: #ffffff;
+  --glass-bg: rgba(255,255,255,0.9);
+  --glass-border: #e5e9f0;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.1);
+  --shadow-card: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ============================================================
@@ -84,12 +96,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--primary), var(--cyan-glow));
+  background: var(--border);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--primary-dark), var(--primary));
+  background: var(--text-muted);
 }
 
 /* ============================================================
@@ -105,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
    Selection
    ============================================================ */
 ::selection {
-  background: rgba(10, 132, 255, 0.3);
+  background: rgba(26,107,204,0.15);
   color: var(--text-primary);
 }
 
@@ -120,54 +132,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .glass-card:hover {
   box-shadow: var(--shadow-hover);
-  transform: translateY(-4px) translateZ(0);
+  transform: translateY(-2px);
 }
 
 /* ============================================================
    Gradient Text
    ============================================================ */
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--cyan-glow) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, #0A84FF 0%, #00d4ff 50%, #ffffff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
 }
 
 /* ============================================================
    Animated Gradient Background
    ============================================================ */
 .animated-gradient {
-  background: linear-gradient(
-    -45deg,
-    #0a0e1a,
-    #0d1b3e,
-    #0A84FF,
-    #00d4ff
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 10s ease infinite;
+  background: var(--bg-secondary);
 }
 
 @keyframes gradientShift {
@@ -180,19 +172,19 @@ h1, h2, h3, h4, h5, h6 {
    Glow Effects
    ============================================================ */
 .glow {
-  box-shadow: 0 0 30px rgba(10, 132, 255, 0.3);
+  box-shadow: 0 0 20px rgba(26,107,204,0.15);
 }
 
 .glow-strong {
-  box-shadow: 0 0 60px rgba(10, 132, 255, 0.5), 0 0 120px rgba(10, 132, 255, 0.2);
+  box-shadow: 0 0 40px rgba(26,107,204,0.2);
 }
 
 .glow-cyan {
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 0 20px rgba(14,165,233,0.15);
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(10, 132, 255, 0.5);
+  text-shadow: none;
 }
 
 /* ============================================================
@@ -205,46 +197,32 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   gap: 8px;
   padding: 14px 32px;
-  background: linear-gradient(135deg, #0A84FF, #0068cc);
+  background: var(--primary);
   color: white;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 15px;
-  border-radius: 50px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 8px 30px rgba(10, 132, 255, 0.35);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 8px rgba(26,107,204,0.2);
   will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 .btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.btn-primary:hover::before {
-  left: 100%;
+  content: none;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px) scale(1.02) translateZ(0);
-  box-shadow: 0 16px 50px rgba(10, 132, 255, 0.5);
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(26,107,204,0.3);
 }
 
 .btn-primary:active {
-  transform: translateY(0) scale(0.98) translateZ(0);
+  transform: translateY(0);
 }
 
 .btn-outline {
@@ -258,21 +236,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 15px;
-  border-radius: 50px;
-  border: 2px solid var(--primary);
+  border-radius: 8px;
+  border: 1.5px solid var(--primary);
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-outline:hover {
   background: var(--primary);
   color: white;
-  transform: translateY(-2px) translateZ(0);
-  box-shadow: 0 8px 30px rgba(10, 132, 255, 0.35);
+  box-shadow: 0 2px 8px rgba(26,107,204,0.2);
 }
 
 /* ============================================================
@@ -336,7 +310,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(10, 132, 255, 0.4);
+  background: rgba(26,107,204,0.2);
   border-radius: 50%;
   animation: particleFloat 8s ease-in-out infinite;
 }
@@ -357,7 +331,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: #0a0e1a;
+  background: #f7f9fc;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -369,10 +343,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-size: 28px;
   font-weight: 800;
-  background: linear-gradient(135deg, #0A84FF, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
   margin-bottom: 32px;
   animation: fadeIn 0.5s ease forwards;
 }
@@ -380,14 +351,14 @@ h1, h2, h3, h4, h5, h6 {
 .loader-bar {
   width: 200px;
   height: 3px;
-  background: rgba(255,255,255,0.1);
+  background: #e5e9f0;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .loader-progress {
   height: 100%;
-  background: linear-gradient(90deg, #0A84FF, #00d4ff);
+  background: var(--primary);
   border-radius: 10px;
   animation: loadProgress 2s ease forwards;
 }
@@ -440,9 +411,7 @@ h1, h2, h3, h4, h5, h6 {
    Announcement Banner
    ============================================================ */
 .announcement-banner {
-  background: linear-gradient(90deg, #0A84FF, #00d4ff, #0A84FF);
-  background-size: 200% 100%;
-  animation: bannerGradient 4s linear infinite;
+  background: var(--primary);
   color: white;
   text-align: center;
   padding: 10px 24px;
@@ -452,11 +421,6 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 100;
 }
 
-@keyframes bannerGradient {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
 /* ============================================================
    Statistics Counter
    ============================================================ */
@@ -464,10 +428,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(36px, 5vw, 60px);
   font-weight: 900;
-  background: linear-gradient(135deg, #0A84FF, #00d4ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary);
 }
 
 /* ============================================================
@@ -480,22 +441,22 @@ h1, h2, h3, h4, h5, h6 {
   width: 2px;
   top: 0;
   bottom: 0;
-  background: linear-gradient(180deg, var(--primary), var(--cyan-glow), transparent);
+  background: linear-gradient(180deg, var(--primary), var(--accent), transparent);
 }
 
 /* ============================================================
    Navbar
    ============================================================ */
 .navbar-glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
 }
 
 .dark .navbar-glass {
-  background: rgba(10, 14, 26, 0.7);
-  border-bottom: 1px solid rgba(10, 132, 255, 0.15);
+  background: rgba(255,255,255,0.92);
+  border-bottom: 1px solid var(--border);
 }
 
 /* ============================================================
@@ -533,22 +494,22 @@ h1, h2, h3, h4, h5, h6 {
   right: 28px;
   width: 52px;
   height: 52px;
-  background: linear-gradient(135deg, #0A84FF, #00d4ff);
+  background: var(--primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 1000;
-  box-shadow: 0 8px 30px rgba(10, 132, 255, 0.4);
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 16px rgba(26,107,204,0.3);
+  transition: all 0.3s ease;
   border: none;
   color: white;
 }
 
 .scroll-top-btn:hover {
   transform: scale(1.1) translateY(-2px);
-  box-shadow: 0 12px 40px rgba(10, 132, 255, 0.6);
+  box-shadow: 0 8px 24px rgba(26,107,204,0.4);
 }
 
 /* ============================================================
@@ -594,9 +555,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .facility-card:hover {
-  transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
-  box-shadow: 0 30px 80px rgba(10, 132, 255, 0.2);
-  border-color: rgba(10, 132, 255, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(26,107,204,0.12);
+  border-color: var(--border-blue);
 }
 
 /* ============================================================
@@ -646,7 +607,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(26,107,204,0.12);
 }
 
 .form-input::placeholder {
@@ -726,7 +687,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .message-user {
   align-self: flex-end;
-  background: linear-gradient(135deg, #0A84FF, #0068cc);
+  background: var(--primary);
   color: white;
   padding: 10px 16px;
   border-radius: 18px 18px 4px 18px;
@@ -772,7 +733,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .admin-nav-item:hover,
 .admin-nav-item.active {
-  background: rgba(10, 132, 255, 0.1);
+  background: var(--primary-subtle);
   color: var(--primary);
 }
 
@@ -828,7 +789,7 @@ h1, h2, h3, h4, h5, h6 {
 .scroll-mouse {
   width: 26px;
   height: 42px;
-  border: 2px solid rgba(255,255,255,0.5);
+  border: 2px solid rgba(26,107,204,0.4);
   border-radius: 20px;
   position: relative;
   display: flex;
@@ -838,7 +799,7 @@ h1, h2, h3, h4, h5, h6 {
 .scroll-wheel {
   width: 4px;
   height: 10px;
-  background: white;
+  background: var(--primary);
   border-radius: 10px;
   margin-top: 8px;
   animation: scrollWheel 2s ease infinite;

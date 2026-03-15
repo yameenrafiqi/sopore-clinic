@@ -2,9 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X, Phone, Calendar } from 'lucide-react';
+import { Menu, X, Phone, Calendar } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -20,11 +19,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const rafRef = useRef<number>(0);
-
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     // rAF-throttled scroll handler — fires at most once per animation frame
@@ -62,14 +57,19 @@ export default function Navbar() {
   // Memoize style objects — avoids creating new object references each render
   const navbarStyle: React.CSSProperties = useMemo(() => isScrolled
     ? {
-        background: theme === 'dark' ? 'rgba(10, 14, 26, 0.85)' : 'rgba(255, 255, 255, 0.85)',
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        borderBottom: `1px solid ${theme === 'dark' ? 'rgba(10,132,255,0.15)' : 'rgba(10,132,255,0.1)'}`,
-        boxShadow: '0 4px 30px rgba(0,0,0,0.1)',
+        background: 'rgba(255,255,255,0.96)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid #e5e9f0',
+        boxShadow: '0 1px 16px rgba(0,0,0,0.06)',
       }
-    : { background: 'transparent', backdropFilter: 'none' },
-  [isScrolled, theme]);
+    : {
+        background: 'rgba(255,255,255,0.85)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(229,233,240,0.6)',
+      },
+  [isScrolled]);
 
   return (
     <>
@@ -91,8 +91,8 @@ export default function Navbar() {
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center"
                 style={{
-                  background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                  boxShadow: '0 4px 15px rgba(10,132,255,0.4)',
+                  background: 'var(--primary)',
+                  boxShadow: '0 4px 15px rgba(26,107,204,0.3)',
                 }}
               >
                 {/* Mini cross */}
@@ -128,10 +128,7 @@ export default function Navbar() {
                   className="font-black text-sm leading-tight"
                   style={{
                     fontFamily: 'var(--font-poppins)',
-                    background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    color: 'var(--primary)',
                   }}
                 >
                   Dr. Majid&apos;s
@@ -156,8 +153,8 @@ export default function Navbar() {
                     onClick={() => scrollTo(link.href)}
                     className="relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200"
                     style={{
-                      color: isActive ? '#0A84FF' : 'var(--text-secondary)',
-                      background: isActive ? 'rgba(10,132,255,0.08)' : 'transparent',
+                      color: isActive ? 'var(--primary)' : 'var(--text-secondary)',
+                      background: isActive ? 'var(--primary-subtle)' : 'transparent',
                       fontFamily: 'var(--font-inter)',
                     }}
                   >
@@ -166,7 +163,7 @@ export default function Navbar() {
                       <motion.div
                         layoutId="activeNav"
                         className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                        style={{ background: 'linear-gradient(90deg, #0A84FF, #00d4ff)' }}
+                        style={{ background: 'var(--primary)' }}
                       />
                     )}
                   </button>
@@ -187,32 +184,6 @@ export default function Navbar() {
                   +91 XXX XXX XXXX
                 </span>
               </a>
-
-              {/* Dark mode toggle */}
-              {mounted && (
-                <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
-                  style={{
-                    background: 'var(--glass-bg)',
-                    border: '1px solid var(--border)',
-                    color: 'var(--text-secondary)',
-                  }}
-                  aria-label="Toggle dark mode"
-                >
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={theme}
-                      initial={{ rotate: -90, opacity: 0 }}
-                      animate={{ rotate: 0, opacity: 1 }}
-                      exit={{ rotate: 90, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-                    </motion.div>
-                  </AnimatePresence>
-                </button>
-              )}
 
               {/* Book Appointment CTA */}
               <motion.button
@@ -274,7 +245,7 @@ export default function Navbar() {
             <motion.div
               className="absolute top-0 right-0 bottom-0 w-80 flex flex-col"
               style={{
-                background: theme === 'dark' ? '#0a0e1a' : '#ffffff',
+                background: '#ffffff',
                 borderLeft: '1px solid var(--border)',
               }}
               initial={{ x: '100%' }}
@@ -291,10 +262,7 @@ export default function Navbar() {
                   className="font-bold text-base"
                   style={{
                     fontFamily: 'var(--font-poppins)',
-                    background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    color: 'var(--primary)',
                   }}
                 >
                   Navigation
@@ -322,8 +290,8 @@ export default function Navbar() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: i * 0.05 }}
                     whileHover={{
-                      background: 'rgba(10,132,255,0.08)',
-                      color: '#0A84FF',
+                      background: 'var(--primary-subtle)',
+                      color: 'var(--primary)',
                       x: 4,
                     }}
                   >

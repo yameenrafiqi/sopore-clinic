@@ -153,7 +153,7 @@ export default function About() {
                 style={{
                   background: 'rgba(10,132,255,0.85)',
                   backdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  border: '1px solid rgba(26,107,204,0.25)',
                 }}
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 6, repeat: Infinity }}

@@ -27,8 +27,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: 'linear-gradient(145deg, #050a18 0%, #0a0e1a 100%)',
-        borderTop: '1px solid rgba(10,132,255,0.15)',
+        background: '#1e3a5f',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
       }}
     >
       {/* Main footer */}
@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #0A84FF, #00d4ff)' }}
+                style={{ background: 'var(--primary)' }}
               >
                 <div className="relative w-5 h-5">
                   <div style={{ position: 'absolute', width: '14px', height: '4px', background: 'white', borderRadius: '2px', top: '50%', left: '50%', transform: 'translate(-50%,-50%)' }} />
@@ -51,15 +51,12 @@ export default function Footer() {
                   className="font-black text-sm"
                   style={{
                     fontFamily: 'var(--font-poppins)',
-                    background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    color: 'white',
                   }}
                 >
                   Dr. Majid&apos;s
                 </div>
-                <div className="text-xs leading-tight" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                <div className="text-xs leading-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>
                   Advanced Physiotherapy Clinic
                 </div>
               </div>
@@ -87,9 +84,9 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
                   style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    color: 'rgba(255,255,255,0.5)',
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    color: 'rgba(255,255,255,0.6)',
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.background = `${color}20`;
@@ -97,9 +94,9 @@ export default function Footer() {
                     (e.currentTarget as HTMLElement).style.borderColor = `${color}40`;
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
-                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)';
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)';
+                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
                   }}
                 >
                   <Icon size={16} />
@@ -237,20 +234,20 @@ export default function Footer() {
       {/* Bottom bar */}
       <div
         style={{
-          borderTop: '1px solid rgba(255,255,255,0.06)',
+          borderTop: '1px solid rgba(255,255,255,0.1)',
           padding: '20px 0',
         }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p
             className="text-xs text-center"
-            style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-inter)' }}
+            style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-inter)' }}
           >
             © {new Date().getFullYear()} Dr. Majid&apos;s Advanced Physiotherapy Clinic. All rights reserved.
           </p>
           <p
             className="text-xs flex items-center gap-1"
-            style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-inter)' }}
+            style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-inter)' }}
           >
             Made with <Heart size={10} style={{ color: '#ff375f' }} fill="#ff375f" /> in J&amp;K, India
           </p>

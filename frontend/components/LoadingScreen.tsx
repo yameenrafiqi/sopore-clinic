@@ -3,199 +3,94 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Deterministic pseudo-random from a seed — avoids SSR/client mismatch
-const seededRand = (seed: number) => {
-  const x = Math.sin(seed + 1) * 10000;
-  return x - Math.floor(x);
-};
-
-const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
-  width: seededRand(i * 3) * 6 + 2,
-  height: seededRand(i * 3 + 1) * 6 + 2,
-  opacity: seededRand(i * 3 + 2) * 0.5 + 0.2,
-  left: seededRand(i * 7) * 100,
-  top: seededRand(i * 7 + 1) * 100,
-  duration: seededRand(i * 5) * 3 + 2,
-  delay: seededRand(i * 5 + 1) * 2,
-}));
-
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setIsVisible(false), 400);
-          return 100;
-        }
-        return prev + Math.random() * 15;
-      });
-    }, 150);
-
-    return () => clearInterval(interval);
+    const steps = [
+      { target: 30,  delay: 100 },
+      { target: 65,  delay: 500 },
+      { target: 88,  delay: 900 },
+      { target: 100, delay: 1300 },
+    ];
+    const timers = steps.map(({ target, delay }) =>
+      setTimeout(() => setProgress(target), delay)
+    );
+    const doneTimer = setTimeout(() => setIsVisible(false), 2000);
+    return () => { timers.forEach(clearTimeout); clearTimeout(doneTimer); };
   }, []);
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="loader-container"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
+          style={{ background: '#f7f9fc' }}
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.6, ease: 'easeInOut' }}
-          style={{ position: 'fixed', zIndex: 9999 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          {/* Background particles — client-only to avoid hydration mismatch */}
-          <div className="absolute inset-0 overflow-hidden">
-            {mounted && PARTICLES.map((p, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full"
-                style={{
-                  width: p.width,
-                  height: p.height,
-                  background: `rgba(10, 132, 255, ${p.opacity})`,
-                  left: `${p.left}%`,
-                  top: `${p.top}%`,
-                  willChange: 'transform, opacity',
-                }}
-                animate={{
-                  y: [0, -30, 0],
-                  opacity: [0.2, 0.8, 0.2],
-                }}
-                transition={{
-                  duration: p.duration,
-                  repeat: Infinity,
-                  delay: p.delay,
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Logo */}
+          {/* Medical cross logo mark */}
           <motion.div
-            className="flex flex-col items-center mb-10"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative mb-8"
+            initial={{ scale: 0.7, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            {/* Medical cross / logo icon */}
-            <motion.div
-              className="w-20 h-20 mb-6 relative"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+            <div
+              className="w-16 h-16 rounded-2xl flex items-center justify-center"
+              style={{ background: 'var(--primary)', boxShadow: '0 8px 32px rgba(26,107,204,0.25)' }}
             >
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: 'conic-gradient(from 0deg, #0A84FF, #00d4ff, #0A84FF)',
-                  padding: '2px',
-                }}
-              >
-                <div
-                  className="w-full h-full rounded-full flex items-center justify-center"
-                  style={{ background: '#0a0e1a' }}
-                >
-                  {/* Medical cross */}
-                  <div className="relative">
-                    <div
-                      style={{
-                        width: '28px',
-                        height: '8px',
-                        background: 'linear-gradient(90deg, #0A84FF, #00d4ff)',
-                        borderRadius: '4px',
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                      }}
-                    />
-                    <div
-                      style={{
-                        width: '8px',
-                        height: '28px',
-                        background: 'linear-gradient(180deg, #0A84FF, #00d4ff)',
-                        borderRadius: '4px',
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                      }}
-                    />
-                  </div>
-                </div>
+              <div className="relative w-7 h-7">
+                <div style={{ position:'absolute', width:'22px', height:'5px', background:'white', borderRadius:'3px', top:'50%', left:'50%', transform:'translate(-50%,-50%)' }} />
+                <div style={{ position:'absolute', width:'5px', height:'22px', background:'white', borderRadius:'3px', top:'50%', left:'50%', transform:'translate(-50%,-50%)' }} />
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
+          {/* Clinic name */}
+          <motion.div
+            className="text-center mb-10"
+            initial={{ y: 12, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
             <h1
-              className="text-3xl font-black tracking-tight"
-              style={{
-                fontFamily: 'var(--font-poppins)',
-                background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
+              className="text-xl font-black mb-1"
+              style={{ fontFamily: 'var(--font-poppins)', color: 'var(--primary)', letterSpacing: '-0.02em' }}
             >
-              Dr. Majid&apos;s
+              Dr. Majid&apos;s Clinic
             </h1>
-            <p
-              className="text-base mt-1"
-              style={{
-                color: 'rgba(255,255,255,0.6)',
-                fontFamily: 'var(--font-inter)',
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                fontSize: '11px',
-              }}
-            >
-              Advanced Physiotherapy Clinic
+            <p className="text-sm" style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-inter)' }}>
+              Physiotherapy &amp; Rehabilitation Center
             </p>
           </motion.div>
 
           {/* Progress bar */}
           <motion.div
+            className="w-48"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-col items-center gap-3"
+            transition={{ delay: 0.3 }}
           >
             <div
-              style={{
-                width: '220px',
-                height: '3px',
-                background: 'rgba(255,255,255,0.1)',
-                borderRadius: '10px',
-                overflow: 'hidden',
-              }}
+              className="w-full h-1 rounded-full overflow-hidden"
+              style={{ background: '#e5e9f0' }}
             >
               <motion.div
-                style={{
-                  height: '100%',
-                  background: 'linear-gradient(90deg, #0A84FF, #00d4ff)',
-                  borderRadius: '10px',
-                }}
+                className="h-full rounded-full"
+                style={{ background: 'var(--primary)' }}
                 animate={{ width: `${Math.min(progress, 100)}%` }}
-                transition={{ ease: 'easeOut' }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
               />
             </div>
-            <span
-              style={{
-                color: 'rgba(255,255,255,0.4)',
-                fontSize: '12px',
-                fontFamily: 'var(--font-inter)',
-              }}
+            <div
+              className="text-center text-xs mt-2"
+              style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-inter)' }}
             >
-              {Math.round(Math.min(progress, 100))}%
-            </span>
+              {progress < 100 ? 'Loading…' : 'Welcome'}
+            </div>
           </motion.div>
         </motion.div>
       )}

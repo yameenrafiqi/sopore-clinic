@@ -1,38 +1,16 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { Calendar, ChevronDown, Play } from 'lucide-react';
 
-// Seeded deterministic values — prevents SSR/client hydration mismatch
-const sr = (seed: number) => { const x = Math.sin(seed + 1) * 10000; return x - Math.floor(x); };
-const HERO_PARTICLES = Array.from({ length: 25 }, (_, i) => ({
-  width: sr(i * 4) * 4 + 1,
-  height: sr(i * 4 + 1) * 4 + 1,
-  opacity: sr(i * 4 + 2) * 0.4 + 0.1,
-  left: sr(i * 7) * 100,
-  top: sr(i * 7 + 1) * 100,
-  yAnim: -(sr(i * 6) * 40 + 20),
-  duration: sr(i * 5) * 5 + 4,
-  delay: sr(i * 5 + 1) * 4,
-}));
-
-const ThreeScene = dynamic(() => import('./ThreeScene'), {
-  ssr: false,
-  loading: () => null,
-});
+// No particles or 3D needed on light theme
 
 export default function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     // GSAP staggered text reveal
@@ -80,56 +58,16 @@ export default function Hero() {
     <section
       className="hero-section"
       style={{
-        background: 'linear-gradient(145deg, #050a18 0%, #0a1228 40%, #0d1b3e 70%, #061230 100%)',
+        background: 'linear-gradient(150deg, #ffffff 0%, #f0f6ff 50%, #eaf1fb 100%)',
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* 3D Background Scene */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{ opacity: 0.85 }}
-      >
-        <ThreeScene />
-      </div>
-
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0 z-1"
-        style={{
-          background:
-            'radial-gradient(ellipse at 60% 50%, rgba(10,132,255,0.08) 0%, transparent 70%), radial-gradient(ellipse at 20% 80%, rgba(0,212,255,0.06) 0%, transparent 60%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      {/* Ambient particles — client-only to avoid hydration mismatch */}
-      <div className="absolute inset-0 z-1 pointer-events-none">
-        {mounted && HERO_PARTICLES.map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: p.width,
-              height: p.height,
-              background: `rgba(10, 132, 255, ${p.opacity})`,
-              left: `${p.left}%`,
-              top: `${p.top}%`,
-              willChange: 'transform, opacity',
-            }}
-            animate={{
-              y: [0, p.yAnim, 0],
-              opacity: [0.1, 0.7, 0.1],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: p.duration,
-              repeat: Infinity,
-              delay: p.delay,
-            }}
-          />
-        ))}
+      {/* Subtle decorative blobs */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+        <div style={{ position:'absolute', top:'-10%', right:'-5%', width:'500px', height:'500px', borderRadius:'50%', background:'radial-gradient(circle, rgba(26,107,204,0.06) 0%, transparent 70%)', }} />
+        <div style={{ position:'absolute', bottom:'10%', left:'-8%', width:'400px', height:'400px', borderRadius:'50%', background:'radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 70%)', }} />
       </div>
 
       {/* Content */}
@@ -144,18 +82,18 @@ export default function Hero() {
               ref={badgeRef}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
               style={{
-                background: 'rgba(10, 132, 255, 0.15)',
-                border: '1px solid rgba(10, 132, 255, 0.3)',
+                background: 'rgba(26,107,204,0.08)',
+                border: '1px solid rgba(26,107,204,0.2)',
                 opacity: 0,
               }}
             >
               <div
                 className="w-2 h-2 rounded-full"
-                style={{ background: '#00d4ff', boxShadow: '0 0 8px #00d4ff' }}
+                style={{ background: 'var(--primary)', boxShadow: 'none' }}
               />
               <span
                 style={{
-                  color: '#00d4ff',
+                  color: 'var(--primary)',
                   fontSize: '13px',
                   fontWeight: 600,
                   fontFamily: 'var(--font-inter)',
@@ -171,7 +109,7 @@ export default function Hero() {
               <h2
                 className="text-xl md:text-2xl font-semibold mb-2"
                 style={{
-                  color: 'rgba(255,255,255,0.7)',
+                  color: 'var(--text-secondary)',
                   fontFamily: 'var(--font-inter)',
                   letterSpacing: '0.05em',
                 }}
@@ -190,7 +128,7 @@ export default function Hero() {
                 fontWeight: 900,
                 lineHeight: 1.0,
                 letterSpacing: '-0.04em',
-                color: 'white',
+                color: 'var(--text-primary)',
               }}
             >
               {heroWords.map((word, i) => (
@@ -200,13 +138,7 @@ export default function Hero() {
                   style={{
                     display: 'inline-block',
                     opacity: 0,
-                    background:
-                      i === 0 || i === 4
-                        ? 'linear-gradient(135deg, #0A84FF, #00d4ff)'
-                        : 'white',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    color: (i === 0 || i === 4) ? 'var(--primary)' : 'var(--text-primary)',
                   }}
                 >
                   {word}
@@ -219,7 +151,7 @@ export default function Hero() {
               ref={subtitleRef}
               className="mb-10 max-w-2xl"
               style={{
-                color: 'rgba(255,255,255,0.6)',
+                color: 'var(--text-secondary)',
                 fontSize: 'clamp(16px, 2vw, 20px)',
                 fontFamily: 'var(--font-inter)',
                 lineHeight: 1.7,
@@ -245,12 +177,12 @@ export default function Hero() {
 
               <motion.button
                 className="hero-cta btn-outline text-base px-8 py-4"
-                style={{ opacity: 0, borderColor: 'rgba(255,255,255,0.3)', color: 'white' }}
+                style={{ opacity: 0 }}
                 onClick={() => scrollTo('treatments')}
                 whileHover={{
                   scale: 1.04,
-                  borderColor: '#0A84FF',
-                  color: '#0A84FF',
+                  borderColor: 'var(--primary)',
+                  color: 'var(--primary)',
                 }}
                 whileTap={{ scale: 0.96 }}
               >
@@ -271,10 +203,7 @@ export default function Hero() {
                   <span
                     className="font-bold text-lg"
                     style={{
-                      background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
+                    color: 'var(--primary)',
                       fontFamily: 'var(--font-poppins)',
                     }}
                   >
@@ -282,7 +211,7 @@ export default function Hero() {
                   </span>
                   <span
                     style={{
-                      color: 'rgba(255,255,255,0.5)',
+                      color: 'var(--text-muted)',
                       fontSize: '13px',
                       fontFamily: 'var(--font-inter)',
                     }}
@@ -310,7 +239,7 @@ export default function Hero() {
           </motion.button>
           <span
             style={{
-              color: 'rgba(255,255,255,0.3)',
+              color: 'var(--text-muted)',
               fontSize: '11px',
               letterSpacing: '0.12em',
               fontFamily: 'var(--font-inter)',

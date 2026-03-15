@@ -101,7 +101,7 @@ export default function Booking() {
       className="section"
       suppressHydrationWarning
       style={{
-        background: 'linear-gradient(135deg, #050a18 0%, #0a1228 50%, #0d1b3e 100%)',
+        background: 'var(--bg-secondary)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -115,7 +115,7 @@ export default function Booking() {
             style={{
               width: p.width,
               height: p.height,
-              background: 'rgba(10,132,255,0.3)',
+              background: 'rgba(26,107,204,0.08)',
               left: `${p.left}%`,
               top: `${p.top}%`,
             }}
@@ -135,10 +135,10 @@ export default function Booking() {
           >
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
-              style={{ background: 'rgba(10,132,255,0.15)', border: '1px solid rgba(10,132,255,0.3)' }}
+              style={{ background: 'var(--primary-subtle)', border: '1px solid rgba(26,107,204,0.2)' }}
             >
-              <Calendar size={14} style={{ color: '#00d4ff' }} />
-              <span style={{ color: '#00d4ff', fontSize: '13px', fontWeight: 600 }}>
+              <Calendar size={14} style={{ color: 'var(--primary)' }} />
+              <span style={{ color: 'var(--primary)', fontSize: '13px', fontWeight: 600 }}>
                 Online Booking
               </span>
             </div>
@@ -146,25 +146,19 @@ export default function Booking() {
               className="section-title mb-4"
               style={{
                 fontFamily: 'var(--font-poppins)',
-                background: 'linear-gradient(135deg, white, rgba(255,255,255,0.7))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                color: 'var(--text-primary)',
               }}
             >
               Book Your{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: 'var(--primary)',
                 }}
               >
                 Appointment
               </span>
             </h2>
-            <p className="section-subtitle mx-auto" style={{ color: 'rgba(255,255,255,0.55)' }}>
+            <p className="section-subtitle mx-auto" style={{ color: 'var(--text-secondary)' }}>
               Schedule your physiotherapy session online. We&apos;ll confirm within 2 hours.
             </p>
           </motion.div>
@@ -186,12 +180,12 @@ export default function Booking() {
                 <CheckCircle size={36} style={{ color: '#34c759' }} />
               </div>
               <h3
-                className="text-2xl font-bold text-white mb-3"
-                style={{ fontFamily: 'var(--font-poppins)' }}
+                className="text-2xl font-bold mb-3"
+                style={{ fontFamily: 'var(--font-poppins)', color: 'var(--text-primary)' }}
               >
                 Appointment Requested!
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--font-inter)' }}>
+              <p style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-inter)' }}>
                 We&apos;ll contact you within 2 hours to confirm your appointment.
                 <br />
                 You can also WhatsApp us for instant confirmation.
@@ -217,9 +211,9 @@ export default function Booking() {
             <motion.div
               className="rounded-3xl p-8 md:p-10"
               style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(10,132,255,0.2)',
-                backdropFilter: 'blur(20px)',
+                background: 'white',
+                border: '1px solid var(--border)',
+                backdropFilter: 'none',
               }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -236,8 +230,8 @@ export default function Booking() {
                       <div
                         className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
                         style={{
-                          background: isCompleted ? '#34c759' : isActive ? '#0A84FF' : 'rgba(255,255,255,0.1)',
-                          color: 'white',
+                          background: isCompleted ? '#34c759' : isActive ? 'var(--primary)' : '#e5e9f0',
+                          color: isCompleted ? 'white' : isActive ? 'white' : 'var(--text-muted)',
                         }}
                       >
                         {isCompleted ? '✓' : stepNum}
@@ -245,7 +239,7 @@ export default function Booking() {
                       <span
                         className="text-xs hidden sm:block"
                         style={{
-                          color: isActive ? 'white' : 'rgba(255,255,255,0.4)',
+                          color: isActive ? 'var(--primary)' : 'var(--text-muted)',
                           fontFamily: 'var(--font-inter)',
                         }}
                       >
@@ -255,7 +249,7 @@ export default function Booking() {
                         <div
                           className="flex-1 h-0.5 rounded-full"
                           style={{
-                            background: isCompleted ? '#34c759' : 'rgba(255,255,255,0.1)',
+                            background: isCompleted ? '#34c759' : 'var(--border)',
                           }}
                         />
                       )}
@@ -274,27 +268,27 @@ export default function Booking() {
                     className="flex flex-col gap-5"
                   >
                     <h3
-                      className="text-xl font-bold text-white mb-2"
-                      style={{ fontFamily: 'var(--font-poppins)' }}
+                      className="text-xl font-bold mb-2"
+                      style={{ fontFamily: 'var(--font-poppins)', color: 'var(--text-primary)' }}
                     >
                       Personal Details
                     </h3>
 
                     <div>
-                      <label className="form-label" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                      <label className="form-label" style={{ color: 'var(--text-secondary)' }}>
                         Full Name *
                       </label>
                       <div className="relative">
-                        <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#0A84FF' }} />
+                        <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'var(--primary)' }} />
                         <input
                           type="text"
                           placeholder="Enter your full name"
                           {...register('name', { required: 'Name is required', minLength: { value: 2, message: 'Name too short' } })}
                           className="form-input pl-11"
                           style={{
-                            background: 'rgba(255,255,255,0.05)',
-                            borderColor: errors.name ? '#ff375f' : 'rgba(10,132,255,0.2)',
-                            color: 'white',
+                            background: 'white',
+                            borderColor: errors.name ? '#ff375f' : 'var(--border)',
+                            color: 'var(--text-primary)',
                           }}
                         />
                       </div>
@@ -304,11 +298,11 @@ export default function Booking() {
                     </div>
 
                     <div>
-                      <label className="form-label" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                      <label className="form-label" style={{ color: 'var(--text-secondary)' }}>
                         Phone Number *
                       </label>
                       <div className="relative">
-                        <Phone size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#0A84FF' }} />
+                        <Phone size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'var(--primary)' }} />
                         <input
                           type="tel"
                           placeholder="+91 XXXXX XXXXX"
@@ -318,9 +312,9 @@ export default function Booking() {
                           })}
                           className="form-input pl-11"
                           style={{
-                            background: 'rgba(255,255,255,0.05)',
-                            borderColor: errors.phone ? '#ff375f' : 'rgba(10,132,255,0.2)',
-                            color: 'white',
+                            background: 'white',
+                            borderColor: errors.phone ? '#ff375f' : 'var(--border)',
+                            color: 'var(--text-primary)',
                           }}
                         />
                       </div>
@@ -330,11 +324,11 @@ export default function Booking() {
                     </div>
 
                     <div>
-                      <label className="form-label" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                      <label className="form-label" style={{ color: 'var(--text-secondary)' }}>
                         Email Address
                       </label>
                       <div className="relative">
-                        <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#0A84FF' }} />
+                        <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'var(--primary)' }} />
                         <input
                           type="email"
                           placeholder="your@email.com"
@@ -343,9 +337,9 @@ export default function Booking() {
                           })}
                           className="form-input pl-11"
                           style={{
-                            background: 'rgba(255,255,255,0.05)',
-                            borderColor: errors.email ? '#ff375f' : 'rgba(10,132,255,0.2)',
-                            color: 'white',
+                            background: 'white',
+                            borderColor: errors.email ? '#ff375f' : 'var(--border)',
+                            color: 'var(--text-primary)',
                           }}
                         />
                       </div>
@@ -386,28 +380,28 @@ export default function Booking() {
                     className="flex flex-col gap-5"
                   >
                     <h3
-                      className="text-xl font-bold text-white mb-2"
-                      style={{ fontFamily: 'var(--font-poppins)' }}
+                      className="text-xl font-bold mb-2"
+                      style={{ fontFamily: 'var(--font-poppins)', color: 'var(--text-primary)' }}
                     >
                       Treatment & Schedule
                     </h3>
 
                     <div>
-                      <label className="form-label" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                      <label className="form-label" style={{ color: 'var(--text-secondary)' }}>
                         Treatment Required *
                       </label>
                       <select
                         {...register('treatment', { required: 'Please select a treatment' })}
                         className="form-input"
                         style={{
-                          background: 'rgba(255,255,255,0.05)',
-                          borderColor: errors.treatment ? '#ff375f' : 'rgba(10,132,255,0.2)',
-                          color: watchedTreatment ? 'white' : 'rgba(255,255,255,0.5)',
+                          background: 'white',
+                          borderColor: errors.treatment ? '#ff375f' : 'var(--border)',
+                          color: 'var(--text-primary)',
                         }}
                       >
                         <option value="" disabled>Select treatment...</option>
                         {treatmentOptions.map((t) => (
-                          <option key={t} value={t} style={{ background: '#0d1b3e', color: 'white' }}>
+                          <option key={t} value={t} style={{ background: 'white', color: 'var(--text-primary)' }}>
                             {t}
                           </option>
                         ))}
@@ -419,21 +413,21 @@ export default function Booking() {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="form-label" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                        <label className="form-label" style={{ color: 'var(--text-secondary)' }}>
                           Preferred Date *
                         </label>
                         <div className="relative">
-                          <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#0A84FF' }} />
+                          <Calendar size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'var(--primary)' }} />
                           <input
                             type="date"
                             min={today}
                             {...register('date', { required: 'Please select a date' })}
                             className="form-input pl-11"
                             style={{
-                              background: 'rgba(255,255,255,0.05)',
-                              borderColor: errors.date ? '#ff375f' : 'rgba(10,132,255,0.2)',
-                              color: 'white',
-                              colorScheme: 'dark',
+                              background: 'white',
+                              borderColor: errors.date ? '#ff375f' : 'var(--border)',
+                              color: 'var(--text-primary)',
+                              colorScheme: 'light',
                             }}
                           />
                         </div>
@@ -443,23 +437,23 @@ export default function Booking() {
                       </div>
 
                       <div>
-                        <label className="form-label" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                        <label className="form-label" style={{ color: 'var(--text-secondary)' }}>
                           Preferred Time *
                         </label>
                         <div className="relative">
-                          <Clock size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#0A84FF' }} />
+                          <Clock size={16} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: 'var(--primary)' }} />
                           <select
                             {...register('time', { required: 'Please select a time' })}
                             className="form-input pl-11"
                             style={{
-                              background: 'rgba(255,255,255,0.05)',
-                              borderColor: errors.time ? '#ff375f' : 'rgba(10,132,255,0.2)',
-                              color: watchedTime ? 'white' : 'rgba(255,255,255,0.5)',
+                              background: 'white',
+                              borderColor: errors.time ? '#ff375f' : 'var(--border)',
+                              color: 'var(--text-primary)',
                             }}
                           >
                             <option value="" disabled>Select time...</option>
                             {timeSlots.map((t) => (
-                              <option key={t} value={t} style={{ background: '#0d1b3e', color: 'white' }}>
+                              <option key={t} value={t} style={{ background: 'white', color: 'var(--text-primary)' }}>
                                 {t}
                               </option>
                             ))}
@@ -472,20 +466,20 @@ export default function Booking() {
                     </div>
 
                     <div>
-                      <label className="form-label" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                      <label className="form-label" style={{ color: 'var(--text-secondary)' }}>
                         Additional Notes
                       </label>
                       <div className="relative">
-                        <MessageSquare size={16} className="absolute left-4 top-4" style={{ color: '#0A84FF' }} />
+                        <MessageSquare size={16} className="absolute left-4 top-4" style={{ color: 'var(--primary)' }} />
                         <textarea
                           rows={3}
                           placeholder="Describe your symptoms or any other relevant information..."
                           {...register('message')}
                           className="form-input pl-11 resize-none"
                           style={{
-                            background: 'rgba(255,255,255,0.05)',
-                            borderColor: 'rgba(10,132,255,0.2)',
-                            color: 'white',
+                            background: 'white',
+                            borderColor: 'var(--border)',
+                            color: 'var(--text-primary)',
                           }}
                         />
                       </div>
@@ -495,7 +489,7 @@ export default function Booking() {
                       <button
                         type="button"
                         className="btn-outline flex-1 justify-center"
-                        style={{ borderColor: 'rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.6)' }}
+                        style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
                         onClick={() => setStep(1)}
                       >
                         Back
@@ -530,15 +524,15 @@ export default function Booking() {
                     className="flex flex-col gap-5"
                   >
                     <h3
-                      className="text-xl font-bold text-white mb-2"
-                      style={{ fontFamily: 'var(--font-poppins)' }}
+                      className="text-xl font-bold mb-2"
+                      style={{ fontFamily: 'var(--font-poppins)', color: 'var(--text-primary)' }}
                     >
                       Confirm Booking
                     </h3>
 
                     <div
                       className="rounded-2xl p-6 flex flex-col gap-3"
-                      style={{ background: 'rgba(10,132,255,0.08)', border: '1px solid rgba(10,132,255,0.2)' }}
+                      style={{ background: 'var(--primary-subtle)', border: '1px solid var(--border-blue)' }}
                     >
                       {[
                         { label: 'Name', value: watch('name'), icon: User },
@@ -549,11 +543,11 @@ export default function Booking() {
                         { label: 'Time', value: watch('time'), icon: Clock },
                       ].map(({ label, value, icon: Icon }) => (
                         <div key={label} className="flex items-center gap-3">
-                          <Icon size={14} style={{ color: '#0A84FF', flexShrink: 0 }} />
-                          <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', minWidth: '70px', fontFamily: 'var(--font-inter)' }}>
+                          <Icon size={14} style={{ color: 'var(--primary)', flexShrink: 0 }} />
+                          <span style={{ color: 'var(--text-muted)', fontSize: '13px', minWidth: '70px', fontFamily: 'var(--font-inter)' }}>
                             {label}
                           </span>
-                          <span style={{ color: 'white', fontSize: '13px', fontFamily: 'var(--font-inter)' }}>
+                          <span style={{ color: 'var(--text-primary)', fontSize: '13px', fontFamily: 'var(--font-inter)' }}>
                             {value}
                           </span>
                         </div>
@@ -564,7 +558,7 @@ export default function Booking() {
                       <button
                         type="button"
                         className="btn-outline flex-1 justify-center"
-                        style={{ borderColor: 'rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.6)' }}
+                        style={{ borderColor: 'var(--border)', color: 'var(--text-secondary)' }}
                         onClick={() => setStep(2)}
                       >
                         Edit
@@ -588,11 +582,11 @@ export default function Booking() {
                 <div
                   style={{
                     height: '1px',
-                    background: 'rgba(255,255,255,0.08)',
+                    background: 'var(--border)',
                     marginBottom: '20px',
                   }}
                 />
-                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '13px', marginBottom: '12px', fontFamily: 'var(--font-inter)' }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '13px', marginBottom: '12px', fontFamily: 'var(--font-inter)' }}>
                   Or book instantly via WhatsApp
                 </p>
                 <a

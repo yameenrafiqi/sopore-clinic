@@ -100,10 +100,7 @@ function StatCard({
           style={{
             fontFamily: 'var(--font-poppins)',
             fontSize: 'clamp(40px, 5vw, 56px)',
-            background: `linear-gradient(135deg, ${stat.color}, white)`,
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            color: stat.color,
           }}
         >
           {inView ? (
@@ -164,11 +161,11 @@ export default function Statistics() {
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
               style={{
-                background: 'rgba(10, 132, 255, 0.1)',
-                border: '1px solid rgba(10, 132, 255, 0.2)',
+                background: 'var(--primary-subtle)',
+                border: '1px solid var(--border-blue)',
               }}
             >
-              <span style={{ color: '#0A84FF', fontSize: '13px', fontWeight: 600 }}>
+              <span style={{ color: 'var(--primary)', fontSize: '13px', fontWeight: 600 }}>
                 Our Numbers Speak
               </span>
             </div>
@@ -180,10 +177,7 @@ export default function Statistics() {
               Trusted by{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: 'var(--primary)',
                 }}
               >
                 Thousands
