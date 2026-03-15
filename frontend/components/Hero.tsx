@@ -61,19 +61,41 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
+      {/* Full-height doctor photo — right half, desktop only */}
+      <div
+        className="hidden lg:block absolute top-0 right-0 h-full w-1/2 pointer-events-none"
+        style={{ zIndex: 0 }}
+      >
+        <img
+          src="/images/mamjan.png"
+          alt="Dr. Majid"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center top',
+            display: 'block',
+          }}
+        />
+        {/* subtle left-edge fade so it blends into the background */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to right, #f0f6ff 0%, transparent 18%)',
+        }} />
+      </div>
+
       {/* Subtle decorative blobs */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div style={{ position:'absolute', top:'-10%', right:'-5%', width:'500px', height:'500px', borderRadius:'50%', background:'radial-gradient(circle, rgba(26,107,204,0.06) 0%, transparent 70%)', }} />
         <div style={{ position:'absolute', bottom:'10%', left:'-8%', width:'400px', height:'400px', borderRadius:'50%', background:'radial-gradient(circle, rgba(14,165,233,0.05) 0%, transparent 70%)', }} />
       </div>
 
       {/* Content */}
       <div
-        className="relative z-10 flex flex-col justify-center min-h-screen"
-        style={{ paddingTop: '80px' }}
+        className="relative flex flex-col justify-center min-h-screen"
+        style={{ paddingTop: '80px', zIndex: 1 }}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="lg:w-1/2">
           <div className="">
             {/* Badge */}
             <div
@@ -211,24 +233,6 @@ export default function Hero() {
               ))}
             </div>
           </div>
-
-            {/* Right column — doctor photo */}
-            <div className="hidden lg:flex justify-center items-center">
-              <div style={{ position: 'relative', width: '100%', maxWidth: '420px' }}>
-                <img
-                  src="/images/mamjan.png"
-                  alt="Dr. Majid"
-                  style={{
-                    width: '100%',
-                    borderRadius: '24px',
-                    boxShadow: '0 24px 60px rgba(26,107,204,0.18)',
-                    objectFit: 'cover',
-                    objectPosition: 'center top',
-                    display: 'block',
-                  }}
-                />
-              </div>
-            </div>
         </div>
         </div>
 
