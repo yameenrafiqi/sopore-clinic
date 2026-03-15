@@ -141,6 +141,45 @@ export default function AIChat() {
 
   return (
     <>
+      {/* Attention label — shown only when chat is closed */}
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ delay: 4.5, duration: 0.4 }}
+            style={{
+              position: 'fixed',
+              bottom: '172px',
+              right: '96px',
+              zIndex: 1000,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'white',
+              borderRadius: '999px',
+              padding: '8px 14px',
+              boxShadow: '0 4px 20px rgba(10,132,255,0.18)',
+              border: '1.5px solid rgba(10,132,255,0.15)',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+            }}
+            onClick={() => setIsOpen(true)}
+          >
+            {/* pulsing dot */}
+            <motion.div
+              animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
+              transition={{ duration: 1.6, repeat: Infinity }}
+              style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#0A84FF', flexShrink: 0 }}
+            />
+            <span style={{ fontSize: '13px', fontWeight: 600, color: '#1a1a2e', fontFamily: 'var(--font-inter)' }}>
+              Ask me anything!
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Toggle button */}
       <motion.button
         className="fixed z-[1000]"
