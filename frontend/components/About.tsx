@@ -113,11 +113,12 @@ export default function About() {
               className="relative rounded-3xl overflow-hidden"
               style={{ aspectRatio: '4/5', maxWidth: '420px', margin: '0 auto' }}
             >
-              {/* Real clinic photo */}
+              {/* Dr. Majid photo */}
               <img
-                src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqjvEXsImBI4Ed3ouvTILsssWBEziwi4GZNOHAyB_yjpbfx38IHh8qv0pNeQkrYZC-9vG12QbXvO9BDlWSucOdhD5zi3fV8FSjrNbD84YY13rNHanGnF47RshPVIbwpPw0-epHd8YGs5UYC=s1360-w1360-h1020-rw"
-                alt="Dr. Majid's Advanced Physiotherapy Clinic"
+                src="/images/MAMU.jpg"
+                alt="Dr. Majid — Advanced Physiotherapist"
                 className="w-full h-full object-cover"
+                style={{ objectPosition: 'center top' }}
                 loading="lazy"
                 decoding="async"
               />
