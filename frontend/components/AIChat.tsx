@@ -250,15 +250,12 @@ export default function AIChat() {
                 borderRadius: '24px 24px 0 0',
               }}
             >
-              <div
-                className="w-9 h-9 rounded-full flex items-center justify-center"
-                style={{ background: 'rgba(255,255,255,0.2)' }}
-              >
-                <Bot size={18} style={{ color: 'white' }} />
+              <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0" style={{ border: '2px solid rgba(255,255,255,0.4)' }}>
+                <img src="/images/Gemini Generated Image.png" alt="Mak AI" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
               </div>
               <div>
                 <p className="text-white text-sm font-semibold" style={{ fontFamily: 'var(--font-poppins)' }}>
-                  AI Physio Assistant
+                  Mak AI Assistant
                 </p>
                 <p className="text-white text-xs" style={{ opacity: 0.7 }}>
                   Ask about symptoms or treatments
