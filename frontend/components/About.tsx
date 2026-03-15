@@ -45,11 +45,12 @@ const timeline = [
 
 const credentials = [
   'Bachelor of Physiotherapy (BPT)',
-  'Masters in Sports Rehabilitation',
   'Certified Shockwave Therapy Practitioner',
   'Member – Indian Association of Physiotherapists',
   'Advanced Manual Therapy Certification',
   'Pain Management Specialist',
+  'Certified Weight Loss Expert',
+  'Certified Nutritionist / Diet Consultant',
 ];
 
 export default function About() {
@@ -194,7 +195,7 @@ export default function About() {
               className="text-lg leading-relaxed"
               style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-inter)' }}
             >
-              Dr. Majid is a highly qualified physiotherapist with over a decade of clinical
+              Dr. Majid is a highly qualified physiotherapist with over 25 years of clinical
               experience in advanced rehabilitation and pain management. Having built one of
               Sopore&apos;s most trusted medical practices, he combines modern technology with
               personalised care to deliver outstanding outcomes.
