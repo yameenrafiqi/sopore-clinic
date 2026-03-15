@@ -414,8 +414,12 @@ function FacilityModal({
 
 export default function Facilities() {
   const [selectedFacility, setSelectedFacility] = useState<(typeof facilities)[0] | null>(null);
+  const [showAll, setShowAll] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: '-100px' });
+
+  const visible = showAll ? facilities : facilities.slice(0, 6);
+  const remaining = facilities.length - 6;
 
   return (
     <section
@@ -461,16 +465,17 @@ export default function Facilities() {
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {facilities.map((facility, i) => {
+          <AnimatePresence initial={false}>
+          {visible.map((facility, i) => {
             const Icon = facility.icon;
             return (
               <motion.div
                 key={facility.id}
                 className="facility-card cursor-pointer"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
+                initial={{ opacity: 0, y: 40, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.96 }}
+                transition={{ duration: 0.45, delay: i >= 6 ? (i - 6) * 0.07 : i * 0.08, ease: 'easeOut' }}
                 onClick={() => setSelectedFacility(facility)}
                 whileHover={{
                   y: -8,
@@ -519,7 +524,39 @@ export default function Facilities() {
               </motion.div>
             );
           })}
+          </AnimatePresence>
         </div>
+
+        {/* View More / Show Less button */}
+        <motion.div
+          className="flex justify-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="flex items-center gap-3 px-8 py-4 rounded-2xl font-semibold transition-all duration-300"
+            style={{
+              background: showAll ? 'var(--glass-bg)' : 'var(--primary)',
+              color: showAll ? 'var(--text-primary)' : 'white',
+              border: showAll ? '1.5px solid var(--border)' : '1.5px solid var(--primary)',
+              fontFamily: 'var(--font-poppins)',
+              fontSize: '15px',
+              boxShadow: showAll ? 'none' : '0 8px 30px rgba(10,132,255,0.25)',
+            }}
+          >
+            <motion.span
+              animate={{ rotate: showAll ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ display: 'flex' }}
+            >
+              <ChevronRight size={18} style={{ transform: 'rotate(90deg)' }} />
+            </motion.span>
+            {showAll ? 'Show Less' : `View All ${remaining} More Facilities`}
+          </button>
+        </motion.div>
       </div>
 
       {/* Modal */}
