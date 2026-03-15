@@ -1,4 +1,3 @@
 {
-  "rootDirectory": "frontend",
   "installCommand": "npm install --legacy-peer-deps"
 }
