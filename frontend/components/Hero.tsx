@@ -196,7 +196,7 @@ export default function Hero() {
               {[
                 { value: '5000+', label: 'Patients Treated' },
                 { value: '4.9★', label: 'Google Rating' },
-                { value: '10+', label: 'Years Experience' },
+                { value: '25+', label: 'Years Experience' },
                 { value: '98%', label: 'Recovery Rate' },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center gap-2" suppressHydrationWarning>

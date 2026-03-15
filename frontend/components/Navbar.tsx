@@ -175,13 +175,13 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               {/* Phone */}
               <a
-                href="tel:+91XXXXXXXXXX"
+                href="tel:+919797152316"
                 className="hidden md:flex items-center gap-2 text-sm"
                 style={{ color: 'var(--text-secondary)' }}
               >
                 <Phone size={15} />
                 <span className="hidden xl:block" style={{ fontFamily: 'var(--font-inter)' }}>
-                  +91 XXX XXX XXXX
+                  +91 97971 52316
                 </span>
               </a>
 
@@ -310,12 +310,12 @@ export default function Navbar() {
                   Book Appointment
                 </button>
                 <a
-                  href="tel:+91XXXXXXXXXX"
+                  href="tel:+919797152316"
                   className="flex items-center justify-center gap-2 mt-3 text-sm"
                   style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-inter)' }}
                 >
                   <Phone size={14} />
-                  +91 XXX XXX XXXX
+                  +91 97971 52316
                 </a>
               </div>
             </motion.div>

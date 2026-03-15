@@ -10,7 +10,7 @@ export default function WhatsAppButton() {
 
   return (
     <motion.a
-      href={`https://wa.me/91XXXXXXXXXX?text=${message}`}
+      href={`https://wa.me/917889489861?text=${message}`}
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-btn"

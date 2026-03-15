@@ -25,10 +25,10 @@ const stats = [
   },
   {
     icon: Award,
-    value: 10,
+    value: 25,
     suffix: '+',
     label: 'Years Experience',
-    description: 'Decade of clinical excellence in Sopore, J&K',
+    description: 'Over two decades of clinical excellence in Sopore, J&K',
     color: '#00d4ff',
   },
   {

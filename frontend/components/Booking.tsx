@@ -195,7 +195,7 @@ export default function Booking() {
                   Book Another
                 </button>
                 <a
-                  href={`https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`}
+                  href={`https://wa.me/917889489861?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold"
@@ -590,7 +590,7 @@ export default function Booking() {
                   Or book instantly via WhatsApp
                 </p>
                 <a
-                  href={`https://wa.me/91XXXXXXXXXX?text=${whatsappMessage}`}
+                  href={`https://wa.me/917889489861?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-semibold transition-all duration-200"

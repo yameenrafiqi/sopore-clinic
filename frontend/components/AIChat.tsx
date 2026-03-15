@@ -48,7 +48,7 @@ function getLocalResponse(message: string): string {
     return "For consultation and treatment fees, please contact us directly:\n\n📞 **Call:** +91 XXX XXX XXXX\n📱 **WhatsApp:** Use the button on this page\n\nPricing varies based on treatment type and duration. We aim to make quality physiotherapy accessible to all patients in J&K!";
   }
 
-  return "Thank you for your question! For accurate medical advice tailored to your specific condition, I recommend booking a consultation with Dr. Majid.\n\n**Quick contact options:**\n📅 Book online via the Booking section\n📱 WhatsApp us directly\n📞 Call +91 XXX XXX XXXX\n\nIs there anything specific about physiotherapy I can help you understand?";
+  return "Thank you for your question! For accurate medical advice tailored to your specific condition, I recommend booking a consultation with Dr. Majid.\n\n**Quick contact options:**\n📅 Book online via the Booking section\n📱 WhatsApp us directly\n📞 Call +91 97971 52316\n\nIs there anything specific about physiotherapy I can help you understand?";
 }
 
 export default function AIChat() {

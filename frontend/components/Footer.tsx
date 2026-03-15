@@ -1,44 +1,32 @@
 'use client';
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Heart, ArrowRight, Facebook, Instagram, Twitter } from 'lucide-react';
+import { MapPin, Phone, Mail, Heart, Facebook, Instagram, Twitter } from 'lucide-react';
 
-const treatmentLinks = [
-  'Back Pain', 'Neck Pain', 'Sciatica', 'Frozen Shoulder',
-  'Knee Pain', 'Sports Injuries', 'Post-Surgery Rehab',
-];
-
-const quickLinks = [
+const navLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'About Dr. Majid', href: '#about' },
-  { label: 'Facilities', href: '#facilities' },
+  { label: 'About', href: '#about' },
+  { label: 'Treatments', href: '#treatments' },
+  { label: 'Gallery', href: '#gallery' },
   { label: 'Book Appointment', href: '#booking' },
-  { label: 'Admin Panel', href: '/admin' },
-  { label: 'Patient Dashboard', href: '/dashboard' },
 ];
 
 export default function Footer() {
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id.replace('#', ''));
+  const scrollTo = (href: string) => {
+    const el = document.getElementById(href.replace('#', ''));
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <footer
-      style={{
-        background: '#1e3a5f',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
-      }}
-    >
+    <footer style={{ background: '#1a3557' }}>
       {/* Main footer */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-3 mb-5">
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center"
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: 'var(--primary)' }}
               >
                 <div className="relative w-5 h-5">
@@ -47,129 +35,64 @@ export default function Footer() {
                 </div>
               </div>
               <div>
-                <div
-                  className="font-black text-sm"
-                  style={{
-                    fontFamily: 'var(--font-poppins)',
-                    color: 'white',
-                  }}
-                >
+                <div className="font-black text-sm" style={{ fontFamily: 'var(--font-poppins)', color: 'white' }}>
                   Dr. Majid&apos;s
                 </div>
-                <div className="text-xs leading-tight" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                <div className="text-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>
                   Advanced Physiotherapy Clinic
                 </div>
               </div>
             </div>
 
-            <p
-              className="text-sm leading-relaxed mb-6"
-              style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-inter)' }}
-            >
-              World-class physiotherapy and rehabilitation in the heart of Sopore, Jammu &amp;
-              Kashmir. Your path to pain-free living starts here.
+            <p className="text-sm leading-relaxed mb-7" style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-inter)', maxWidth: '260px' }}>
+              Restoring movement and relieving pain through expert physiotherapy in Sopore, J&amp;K.
             </p>
 
-            {/* Social links */}
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               {[
-                { icon: Facebook, href: '#', color: '#1877F2' },
-                { icon: Instagram, href: '#', color: '#E1306C' },
-                { icon: Twitter, href: '#', color: '#1DA1F2' },
-              ].map(({ icon: Icon, href, color }) => (
+                { icon: Facebook, href: '#', label: 'Facebook' },
+                { icon: Instagram, href: '#', label: 'Instagram' },
+                { icon: Twitter, href: '#', label: 'Twitter' },
+              ].map(({ icon: Icon, href, label }) => (
                 <a
-                  key={href + color}
+                  key={label}
                   href={href}
+                  aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200"
-                  style={{
-                    background: 'rgba(255,255,255,0.08)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'rgba(255,255,255,0.6)',
-                  }}
+                  style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = `${color}20`;
-                    (e.currentTarget as HTMLElement).style.color = color;
-                    (e.currentTarget as HTMLElement).style.borderColor = `${color}40`;
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.12)';
+                    (e.currentTarget as HTMLElement).style.color = 'white';
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.08)';
-                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.07)';
+                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.4)';
                   }}
                 >
-                  <Icon size={16} />
+                  <Icon size={15} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
-            <h4
-              className="font-semibold mb-5"
-              style={{ color: 'white', fontFamily: 'var(--font-poppins)' }}
-            >
-              Quick Links
+            <h4 className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-inter)' }}>
+              Navigation
             </h4>
-            <ul className="flex flex-col gap-2">
-              {quickLinks.map((link) => (
+            <ul className="flex flex-col gap-3">
+              {navLinks.map((link) => (
                 <li key={link.label}>
-                  {link.href.startsWith('#') ? (
-                    <button
-                      onClick={() => scrollTo(link.href)}
-                      className="flex items-center gap-2 text-sm transition-all duration-200 group"
-                      style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-inter)' }}
-                    >
-                      <ArrowRight
-                        size={12}
-                        className="group-hover:translate-x-1 transition-transform"
-                        style={{ color: '#0A84FF' }}
-                      />
-                      <span className="group-hover:text-white transition-colors">{link.label}</span>
-                    </button>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="flex items-center gap-2 text-sm transition-all duration-200 group"
-                      style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-inter)', textDecoration: 'none' }}
-                    >
-                      <ArrowRight
-                        size={12}
-                        className="group-hover:translate-x-1 transition-transform"
-                        style={{ color: '#0A84FF' }}
-                      />
-                      <span className="group-hover:text-white transition-colors">{link.label}</span>
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Treatments */}
-          <div>
-            <h4
-              className="font-semibold mb-5"
-              style={{ color: 'white', fontFamily: 'var(--font-poppins)' }}
-            >
-              Treatments
-            </h4>
-            <ul className="flex flex-col gap-2">
-              {treatmentLinks.map((t) => (
-                <li key={t}>
                   <button
-                    onClick={() => scrollTo('#treatments')}
-                    className="flex items-center gap-2 text-sm transition-all duration-200 group"
-                    style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-inter)' }}
+                    onClick={() => scrollTo(link.href)}
+                    className="text-sm transition-colors duration-200"
+                    style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--font-inter)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = 'white')}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.55)')}
                   >
-                    <ArrowRight
-                      size={12}
-                      className="group-hover:translate-x-1 transition-transform"
-                      style={{ color: '#0A84FF' }}
-                    />
-                    <span className="group-hover:text-white transition-colors">{t}</span>
+                    {link.label}
                   </button>
                 </li>
               ))}
@@ -178,81 +101,46 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4
-              className="font-semibold mb-5"
-              style={{ color: 'white', fontFamily: 'var(--font-poppins)' }}
-            >
-              Contact &amp; Hours
+            <h4 className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-inter)' }}>
+              Contact
             </h4>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
-                <MapPin size={16} className="mt-0.5 flex-shrink-0" style={{ color: '#0A84FF' }} />
-                <span
-                  className="text-sm"
-                  style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-inter)' }}
-                >
-                  Sopore, Baramulla District,<br />
-                  Jammu &amp; Kashmir, India — 193201
+                <MapPin size={15} className="mt-0.5 flex-shrink-0" style={{ color: 'rgba(255,255,255,0.35)' }} />
+                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.55)', fontFamily: 'var(--font-inter)', lineHeight: 1.6 }}>
+                  Sopore, Baramulla District<br />Jammu &amp; Kashmir — 193201
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone size={16} className="flex-shrink-0" style={{ color: '#0A84FF' }} />
-                <a
-                  href="tel:+91XXXXXXXXXX"
-                  className="text-sm transition-colors"
-                  style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontFamily: 'var(--font-inter)' }}
-                >
-                  +91 XXX XXX XXXX
+                <Phone size={15} className="flex-shrink-0" style={{ color: 'rgba(255,255,255,0.35)' }} />
+                <a href="tel:+919797152316" className="text-sm" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontFamily: 'var(--font-inter)' }}>
+                  +91 97971 52316
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={16} className="flex-shrink-0" style={{ color: '#0A84FF' }} />
-                <a
-                  href="mailto:info@drmajidclinic.com"
-                  className="text-sm transition-colors"
-                  style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontFamily: 'var(--font-inter)' }}
-                >
+                <Mail size={15} className="flex-shrink-0" style={{ color: 'rgba(255,255,255,0.35)' }} />
+                <a href="mailto:info@drmajidclinic.com" className="text-sm" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontFamily: 'var(--font-inter)' }}>
                   info@drmajidclinic.com
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Clock size={16} className="mt-0.5 flex-shrink-0" style={{ color: '#0A84FF' }} />
-                <span
-                  className="text-sm"
-                  style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-inter)' }}
-                >
-                  Mon–Fri: 9:00 AM – 6:00 PM<br />
-                  Saturday: 9:00 AM – 2:00 PM<br />
-                  Sunday: Closed
-                </span>
-              </li>
             </ul>
           </div>
+
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div
-        style={{
-          borderTop: '1px solid rgba(255,255,255,0.1)',
-          padding: '20px 0',
-        }}
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p
-            className="text-xs text-center"
-            style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-inter)' }}
-          >
-            © {new Date().getFullYear()} Dr. Majid&apos;s Advanced Physiotherapy Clinic. All rights reserved.
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '18px 0' }}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-inter)' }}>
+            © {new Date().getFullYear()} Dr. Majid&apos;s Advanced Physiotherapy Clinic
           </p>
-          <p
-            className="text-xs flex items-center gap-1"
-            style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-inter)' }}
-          >
-            Made with <Heart size={10} style={{ color: '#ff375f' }} fill="#ff375f" /> in J&amp;K, India
+          <p className="text-xs flex items-center gap-1.5" style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'var(--font-inter)' }}>
+            Made with <Heart size={10} style={{ color: '#ff6b8a' }} fill="#ff6b8a" /> in J&amp;K, India
           </p>
         </div>
       </div>
     </footer>
   );
 }
+

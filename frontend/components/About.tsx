@@ -176,7 +176,7 @@ export default function About() {
               className="text-3xl md:text-4xl font-bold"
               style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-poppins)' }}
             >
-              10+ Years of Healing &amp;{' '}
+              25+ Years of Healing &amp;{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #0A84FF, #00d4ff)',
@@ -231,7 +231,7 @@ export default function About() {
             {/* Contact */}
             <div className="flex gap-4 flex-wrap">
               <a
-                href="tel:+91XXXXXXXXXX"
+                href="tel:+919797152316"
                 className="flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200"
                 style={{
                   background: 'rgba(10,132,255,0.1)',
