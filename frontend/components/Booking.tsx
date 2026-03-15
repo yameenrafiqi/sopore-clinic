@@ -284,11 +284,12 @@ export default function Booking() {
                           type="text"
                           placeholder="Enter your full name"
                           {...register('name', { required: 'Name is required', minLength: { value: 2, message: 'Name too short' } })}
-                          className="form-input pl-11"
+                          className="form-input"
                           style={{
                             background: 'white',
                             borderColor: errors.name ? '#ff375f' : 'var(--border)',
                             color: 'var(--text-primary)',
+                            paddingLeft: '44px',
                           }}
                         />
                       </div>
@@ -310,11 +311,12 @@ export default function Booking() {
                             required: 'Phone number is required',
                             pattern: { value: /^[+]?[\d\s\-()]{10,15}$/, message: 'Invalid phone number' },
                           })}
-                          className="form-input pl-11"
+                          className="form-input"
                           style={{
                             background: 'white',
                             borderColor: errors.phone ? '#ff375f' : 'var(--border)',
                             color: 'var(--text-primary)',
+                            paddingLeft: '44px',
                           }}
                         />
                       </div>
@@ -335,11 +337,12 @@ export default function Booking() {
                           {...register('email', {
                             pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Invalid email address' },
                           })}
-                          className="form-input pl-11"
+                          className="form-input"
                           style={{
                             background: 'white',
                             borderColor: errors.email ? '#ff375f' : 'var(--border)',
                             color: 'var(--text-primary)',
+                            paddingLeft: '44px',
                           }}
                         />
                       </div>

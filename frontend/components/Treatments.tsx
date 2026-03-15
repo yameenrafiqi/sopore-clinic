@@ -207,7 +207,8 @@ export default function Treatments() {
               placeholder="Search treatments..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="form-input pl-11 w-72"
+              className="form-input w-72"
+              style={{ paddingLeft: '44px' }}
             />
           </div>
 
