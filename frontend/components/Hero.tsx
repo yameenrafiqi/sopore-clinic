@@ -13,7 +13,6 @@ export default function Hero() {
   const badgeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // GSAP staggered text reveal
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 2.8 });
 
@@ -22,15 +21,15 @@ export default function Hero() {
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
       ).fromTo(
-        '.hero-title-word',
-        { y: 80, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'power4.out' },
+        titleRef.current,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out' },
         '-=0.2',
       ).fromTo(
         subtitleRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' },
-        '-=0.4',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
+        '-=0.3',
       ).fromTo(
         '.hero-cta',
         { y: 20, opacity: 0 },
@@ -51,8 +50,6 @@ export default function Hero() {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
-
-  const heroWords = ['Advanced', 'Rehabilitation', '&', 'Pain', 'Recovery'];
 
   return (
     <section
@@ -104,47 +101,39 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Clinic Name */}
-            <div className="mb-4 overflow-hidden">
-              <h2
-                className="text-xl md:text-2xl font-semibold mb-2"
-                style={{
-                  color: 'var(--text-secondary)',
-                  fontFamily: 'var(--font-inter)',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                Dr. Majid&apos;s Advanced Physiotherapy Clinic
-              </h2>
-            </div>
-
-            {/* Main headline */}
+            {/* Main headline — Clinic Name */}
             <h1
               ref={titleRef}
-              className="mb-6"
+              className="mb-4"
               style={{
-                fontSize: 'clamp(42px, 7vw, 88px)',
+                fontSize: 'clamp(36px, 5.5vw, 72px)',
                 fontFamily: 'var(--font-poppins)',
-                fontWeight: 900,
-                lineHeight: 1.0,
-                letterSpacing: '-0.04em',
+                fontWeight: 800,
+                lineHeight: 1.1,
+                letterSpacing: '-0.02em',
                 color: 'var(--text-primary)',
+                opacity: 0,
               }}
             >
-              {heroWords.map((word, i) => (
-                <span
-                  key={i}
-                  className="hero-title-word inline-block mr-4"
-                  style={{
-                    display: 'inline-block',
-                    opacity: 0,
-                    color: (i === 0 || i === 4) ? 'var(--primary)' : 'var(--text-primary)',
-                  }}
-                >
-                  {word}
-                </span>
-              ))}
+              Dr. Majid&apos;s{' '}
+              <span style={{ color: 'var(--primary)' }}>Advanced</span>{' '}Physiotherapy Clinic
             </h1>
+
+            {/* Subheading */}
+            <p
+              ref={subtitleRef}
+              className="mb-8"
+              style={{
+                fontSize: 'clamp(15px, 1.6vw, 19px)',
+                fontFamily: 'var(--font-inter)',
+                fontWeight: 500,
+                color: 'var(--text-secondary)',
+                letterSpacing: '0.01em',
+                opacity: 0,
+              }}
+            >
+              Advanced Rehabilitation &amp; Pain Recovery
+            </p>
 
             {/* Subtitle */}
             <p
