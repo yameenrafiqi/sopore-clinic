@@ -63,8 +63,8 @@ export default function Hero() {
     >
       {/* Full-height doctor photo — right half, desktop only */}
       <div
-        className="hidden lg:block absolute top-0 right-0 h-full w-1/2 pointer-events-none"
-        style={{ zIndex: 0 }}
+        className="hidden lg:block absolute right-0 w-1/2 pointer-events-none"
+        style={{ zIndex: 0, top: '80px', height: 'calc(100% - 80px)' }}
       >
         <img
           src="/images/mamjan.png"
@@ -77,10 +77,15 @@ export default function Hero() {
             display: 'block',
           }}
         />
-        {/* subtle left-edge fade so it blends into the background */}
+        {/* left-edge fade */}
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(to right, #f0f6ff 0%, transparent 18%)',
+        }} />
+        {/* bottom fade — crops at hands level */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to top, #eaf1fb 0%, transparent 35%)',
         }} />
       </div>
 
