@@ -117,7 +117,7 @@ export default function About() {
               {/* Dr. Majid photo */}
               <img
                 src="/images/MAMU.jpg"
-                alt="Dr. Majid — Advanced Physiotherapist"
+                alt="Dr. Majid — Senior Physiotherapist"
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center top' }}
                 loading="lazy"
@@ -138,7 +138,7 @@ export default function About() {
                   Dr. Majid
                 </h3>
                 <p style={{ color: '#0A84FF', fontSize: '14px', fontWeight: 600 }}>
-                  Advanced Physiotherapist
+                  Senior Physiotherapist
                 </p>
                 <p
                   className="mt-1.5 flex items-center gap-1.5"
