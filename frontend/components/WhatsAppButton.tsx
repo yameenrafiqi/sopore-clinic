@@ -20,7 +20,7 @@ export default function WhatsAppButton() {
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.9 }}
     >
-      <img src="/images/whatsapp.jpg" alt="WhatsApp" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />
+      <img src="/images/whatsapp.png" alt="WhatsApp" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />
     </motion.a>
   );
 }
