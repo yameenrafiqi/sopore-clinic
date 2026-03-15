@@ -20,15 +20,7 @@ export default function WhatsAppButton() {
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.9 }}
     >
-      <img src="/images/whatsapp.jpg" alt="WhatsApp" style={{ width: '30px', height: '30px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />
-
-      {/* Pulse ring */}
-      <motion.div
-        className="absolute inset-0 rounded-full"
-        style={{ border: '2px solid #25d366' }}
-        animate={{ scale: [1, 1.5, 1.5], opacity: [0.8, 0, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeOut' }}
-      />
+      <img src="/images/whatsapp.jpg" alt="WhatsApp" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />
     </motion.a>
   );
 }

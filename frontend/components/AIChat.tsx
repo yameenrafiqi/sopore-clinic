@@ -147,17 +147,19 @@ export default function AIChat() {
         style={{
           bottom: '160px',
           right: '28px',
-          width: '52px',
-          height: '52px',
-          background: 'linear-gradient(135deg, #0A84FF, #0068cc)',
+          width: '60px',
+          height: '60px',
+          background: 'transparent',
           borderRadius: '50%',
           border: 'none',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 8px 30px rgba(10,132,255,0.4)',
+          boxShadow: 'none',
           color: 'white',
+          position: 'fixed',
+          padding: 0,
         }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -175,7 +177,17 @@ export default function AIChat() {
             exit={{ rotate: 90, opacity: 0 }}
             transition={{ duration: 0.15 }}
           >
-            {isOpen ? <X size={20} /> : <img src="/images/Gemini Generated Image.png" alt="AI" style={{ width: '34px', height: '34px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />}
+            {isOpen ? (
+              <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'linear-gradient(135deg, #0A84FF, #0068cc)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 30px rgba(10,132,255,0.4)' }}>
+                <X size={22} color="white" />
+              </div>
+            ) : (
+              <div style={{ position: 'relative', width: '60px', height: '60px' }}>
+                <img src="/images/Gemini Generated Image.png" alt="AI" style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%', display: 'block' }} />
+                {/* AI badge */}
+                <div style={{ position: 'absolute', bottom: 2, right: 2, background: 'linear-gradient(135deg, #0A84FF, #0068cc)', borderRadius: '6px', padding: '1px 4px', fontSize: '9px', fontWeight: 700, color: 'white', letterSpacing: '0.04em', lineHeight: 1.4, boxShadow: '0 2px 6px rgba(10,132,255,0.5)' }}>AI</div>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </motion.button>
