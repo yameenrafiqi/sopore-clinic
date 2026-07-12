@@ -370,6 +370,36 @@ pm2 save
 3. Create a database user and whitelist your server IP.
 4. Copy the connection string and set it as `MONGODB_URI` in your `.env`.
 
+### 🌐 Connecting Your GoDaddy Domain (drmajidclinic.com)
+
+The public website (Hero, About, Reviews, Gallery) is static and works with just the **frontend** deployed — so you can get the domain live first and add the backend later. Do this **after** the frontend is on Vercel.
+
+**Step 1 — Add the domain in Vercel**
+- Open your project → **Settings → Domains → Add Domain**.
+- Enter `drmajidclinic.com`. When prompted, also add `www.drmajidclinic.com`.
+- Vercel then shows the **exact DNS records** to create — always use those values (the `www` CNAME is unique per project).
+
+**Step 2 — Set the DNS records in GoDaddy**
+- GoDaddy → **My Products → your domain → DNS → Manage DNS**.
+- Remove any GoDaddy "parked" `A`/`CNAME` records on `@` and `www`, then add:
+
+| Type | Name | Value | TTL |
+|---|---|---|---|
+| `A` | `@` | `76.76.21.21` *(or the IP Vercel shows)* | 600 |
+| `CNAME` | `www` | the `xxxxxxxx.vercel-dns-###.com` value shown in Vercel | 600 |
+
+> ⚠️ The Vercel dashboard is the source of truth — copy the values it displays exactly.
+> Alternative: you can instead set GoDaddy's **nameservers** to Vercel's, but the A + CNAME method above keeps DNS (and any email) in GoDaddy.
+
+**Step 3 — Wait for propagation**
+- Usually 10–60 minutes. Vercel auto-issues a free SSL certificate once the records resolve, and the domain flips to **"Valid Configuration."**
+
+**Step 4 — (For bookings/admin) wire the frontend to the live backend**
+- Deploy the backend (Railway/Render — see above) and point `MONGODB_URI` at MongoDB Atlas.
+- In Vercel → **Settings → Environment Variables**, set `NEXT_PUBLIC_BACKEND_URL = https://<your-backend-host>/api`, then redeploy.
+- On the backend host, set `FRONTEND_URL = https://drmajidclinic.com`.
+- CORS is already configured for `drmajidclinic.com` and `www.drmajidclinic.com` in `backend/src/index.js`.
+
 ---
 
 ## 📸 Adding Real Photos
