@@ -119,8 +119,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={15} className="flex-shrink-0" style={{ color: 'rgba(255,255,255,0.35)' }} />
-                <a href="mailto:info@drmajidclinic.com" className="text-sm" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontFamily: 'var(--font-inter)' }}>
-                  info@drmajidclinic.com
+                <a href="mailto:majidkirmani@gmail.com" className="text-sm" style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'none', fontFamily: 'var(--font-inter)' }}>
+                  majidkirmani@gmail.com
                 </a>
               </li>
             </ul>

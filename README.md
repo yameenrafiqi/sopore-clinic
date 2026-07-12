@@ -207,7 +207,7 @@ JWT_EXPIRES_IN=7d
 # Default admin credentials (auto-created on first run)
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=Admin@12345
-ADMIN_EMAIL=admin@drmajidclinic.com
+ADMIN_EMAIL=majidkirmani@gmail.com
 
 # Cloudinary
 CLOUDINARY_CLOUD_NAME=your-cloud-name

@@ -83,7 +83,7 @@ const connectDB = async () => {
       const hashedPwd = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Admin@12345', 12);
       await User.create({
         username: process.env.ADMIN_USERNAME || 'admin',
-        email: process.env.ADMIN_EMAIL || 'admin@drmajidclinic.com',
+        email: process.env.ADMIN_EMAIL || 'majidkirmani@gmail.com',
         password: hashedPwd,
         role: 'admin',
       });
