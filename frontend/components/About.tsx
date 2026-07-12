@@ -6,39 +6,39 @@ import { CheckCircle, Award, GraduationCap, Stethoscope, MapPin, Phone } from 'l
 
 const timeline = [
   {
-    year: '2014',
+    year: '2001',
     title: 'Clinic Established',
     desc: 'Dr. Majid founded the clinic in Sopore, J&K with a mission to bring world-class physiotherapy to the region.',
     icon: '🏥',
   },
   {
-    year: '2016',
+    year: '2006',
     title: 'Electrotherapy Unit',
     desc: 'Introduced advanced electrotherapy equipment, including TENS, IFT, and ultrasound therapy.',
     icon: '⚡',
   },
   {
-    year: '2018',
+    year: '2011',
     title: 'Sports Rehab Division',
     desc: 'Launched dedicated Sports Injury Rehabilitation program catering to athletes across J&K.',
     icon: '🏃',
   },
   {
-    year: '2020',
+    year: '2016',
     title: 'Shockwave Therapy',
     desc: 'Became one of the first clinics in the region to offer Extracorporeal Shockwave Therapy (ESWT).',
     icon: '💫',
   },
   {
-    year: '2022',
+    year: '2020',
     title: 'CPM Therapy',
     desc: 'Added Continuous Passive Motion (CPM) machines for post-surgery joint rehabilitation.',
     icon: '🦾',
   },
   {
     year: '2024',
-    title: '5000+ Patients Milestone',
-    desc: 'Celebrated treating over 5,000 patients with a 98% satisfaction and recovery success rate.',
+    title: '30,000+ Patients Milestone',
+    desc: 'Celebrated treating over 30,000 patients with a 98% satisfaction and recovery success rate.',
     icon: '🏆',
   },
 ];
