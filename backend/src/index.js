@@ -42,8 +42,8 @@ app.use('/api/bookings', bookingLimiter);
 /* ── CORS ───────────────────────────────────────────────── */
 const allowedOrigins = [
   process.env.FRONTEND_URL || 'http://localhost:3000',
-  'https://drmajidclinic.com',
-  'https://www.drmajidclinic.com',
+  'https://drmajidphysio.co.in',
+  'https://www.drmajidphysio.co.in',
 ];
 
 app.use(

@@ -35,12 +35,12 @@ export const metadata: Metadata = {
   authors: [{ name: "Dr. Majid's Advanced Physiotherapy Clinic" }],
   creator: "Dr. Majid's Advanced Physiotherapy Clinic",
   publisher: "Dr. Majid's Advanced Physiotherapy Clinic",
-  metadataBase: new URL('https://drmajidclinic.com'),
+  metadataBase: new URL('https://drmajidphysio.co.in'),
   openGraph: {
     title: "Dr. Majid's Advanced Physiotherapy Clinic",
     description:
       "Advanced Rehabilitation & Pain Recovery. Located in Sopore, Jammu & Kashmir, India.",
-    url: 'https://drmajidclinic.com',
+    url: 'https://drmajidphysio.co.in',
     siteName: "Dr. Majid's Advanced Physiotherapy Clinic",
     images: [
       {
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://drmajidclinic.com',
+    canonical: 'https://drmajidphysio.co.in',
   },
 };
 
@@ -98,7 +98,7 @@ export default function RootLayout({
               name: "Dr. Majid's Advanced Physiotherapy Clinic",
               description:
                 'Advanced physiotherapy clinic offering rehabilitation, pain recovery, shockwave therapy, and sports injury treatment.',
-              url: 'https://drmajidclinic.com',
+              url: 'https://drmajidphysio.co.in',
               telephone: '+91-XXXXXXXXXX',
               address: {
                 '@type': 'PostalAddress',

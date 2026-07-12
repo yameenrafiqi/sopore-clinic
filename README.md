@@ -370,13 +370,13 @@ pm2 save
 3. Create a database user and whitelist your server IP.
 4. Copy the connection string and set it as `MONGODB_URI` in your `.env`.
 
-### 🌐 Connecting Your GoDaddy Domain (drmajidclinic.com)
+### 🌐 Connecting Your GoDaddy Domain (drmajidphysio.co.in)
 
 The public website (Hero, About, Reviews, Gallery) is static and works with just the **frontend** deployed — so you can get the domain live first and add the backend later. Do this **after** the frontend is on Vercel.
 
 **Step 1 — Add the domain in Vercel**
 - Open your project → **Settings → Domains → Add Domain**.
-- Enter `drmajidclinic.com`. When prompted, also add `www.drmajidclinic.com`.
+- Enter `drmajidphysio.co.in`. When prompted, also add `www.drmajidphysio.co.in`.
 - Vercel then shows the **exact DNS records** to create — always use those values (the `www` CNAME is unique per project).
 
 **Step 2 — Set the DNS records in GoDaddy**
@@ -397,8 +397,8 @@ The public website (Hero, About, Reviews, Gallery) is static and works with just
 **Step 4 — (For bookings/admin) wire the frontend to the live backend**
 - Deploy the backend (Railway/Render — see above) and point `MONGODB_URI` at MongoDB Atlas.
 - In Vercel → **Settings → Environment Variables**, set `NEXT_PUBLIC_BACKEND_URL = https://<your-backend-host>/api`, then redeploy.
-- On the backend host, set `FRONTEND_URL = https://drmajidclinic.com`.
-- CORS is already configured for `drmajidclinic.com` and `www.drmajidclinic.com` in `backend/src/index.js`.
+- On the backend host, set `FRONTEND_URL = https://drmajidphysio.co.in`.
+- CORS is already configured for `drmajidphysio.co.in` and `www.drmajidphysio.co.in` in `backend/src/index.js`.
 
 ---
 
