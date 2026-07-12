@@ -7,71 +7,138 @@ import { Star, Quote } from 'lucide-react';
 const reviews = [
   {
     id: 1,
-    name: 'Amir Hassan',
+    name: 'Mazez Animation',
     rating: 5,
-    date: 'January 2026',
-    treatment: 'Back Pain',
+    date: 'June 2026',
     review:
-      'Dr. Majid is exceptional. After 2 years of chronic lower back pain, I finally found relief after just 8 sessions. His approach is scientific yet very personalised. Highly recommend to anyone suffering from back or spine issues.',
-    avatar: '👨',
+      'Had back pain and disc problem. I took physiotherapy session here. Treatment helped me to recover a lot. Within a month I could feel the difference.',
     verified: true,
   },
   {
     id: 2,
-    name: 'Firdous Begum',
+    name: 'AAFIYA Kirmani',
     rating: 5,
-    date: 'December 2025',
-    treatment: 'Frozen Shoulder',
+    date: 'June 2026',
     review:
-      'I had severe frozen shoulder for 6 months and couldn\'t lift my arm. After the treatment programme at Dr. Majid\'s clinic, I have full range of motion restored. The team is so professional and caring.',
-    avatar: '👩',
+      "The service is top-notch, but what stands out most is how Dr. Majid treats his patients. He treats you like a person first, patient second. The facilities are excellent, staff is courteous, and appointments run on time.",
     verified: true,
   },
   {
     id: 3,
-    name: 'Bilal Ahmad',
+    name: 'Haseeb Shah',
     rating: 5,
-    date: 'November 2025',
-    treatment: 'Sports Injury',
+    date: 'June 2026',
     review:
-      'As a football player, I had an ACL injury and was worried about my career. Dr. Majid\'s sports rehabilitation programme got me back on the field in 4 months. The facility is world-class for Sopore.',
-    avatar: '⚽',
+      "I had a great experience at Dr. Majid's Physiotherapy clinic before, and I'm sure it's only grown even better since. Surely one of the best in Kashmir.",
     verified: true,
   },
   {
     id: 4,
-    name: 'Nasreen Khan',
+    name: 'Hamees Shah',
     rating: 5,
-    date: 'October 2025',
-    treatment: 'Knee Pain',
+    date: 'June 2026',
     review:
-      'Suffered from severe knee pain for years. The shockwave therapy combined with exercises provided dramatic improvement within weeks. The clinic environment is modern and very clean. Staff is very helpful.',
-    avatar: '👩‍💼',
+      "Top-notch care at Dr. Majid's Advanced Physiotherapy Clinic. Professional, effective, and a trusted name in town. Highly recommended.",
     verified: true,
   },
   {
     id: 5,
-    name: 'Mohammad Yousuf',
+    name: 'Azra Anjum',
     rating: 5,
-    date: 'September 2025',
-    treatment: 'Post-Surgery Rehab',
+    date: 'June 2026',
     review:
-      'After my knee replacement surgery, Dr. Majid\'s post-surgery rehab programme was exactly what I needed. Structured, professional and effective. I\'m walking normally again thanks to this clinic.',
-    avatar: '👨‍🦳',
+      'Very impressive service. Kind, professional, and supportive staff. Excellent care and a positive experience.',
     verified: true,
   },
   {
     id: 6,
-    name: 'Saima Rashid',
+    name: 'Nahida Rasool',
     rating: 5,
-    date: 'August 2025',
-    treatment: 'Sciatica',
+    date: 'June 2026',
     review:
-      'The sciatica pain was unbearable — shooting down my entire leg. Within 3 weeks of treatment, the pain reduced by 80%. Dr. Majid explains everything clearly and genuinely cares about recovery.',
-    avatar: '👩‍⚕️',
+      'This physiotherapy clinic provides the best quality of service. I am fully satisfied with your service.',
+    verified: true,
+  },
+  {
+    id: 7,
+    name: 'Asrat Amin',
+    rating: 5,
+    date: 'May 2026',
+    review:
+      'This is literally one of the greatest physiotherapy clinics. People who are suffering from any kind of pain, disc issues and other neurological conditions — this clinic is what you need. The staff is highly knowledgeable.',
+    verified: true,
+  },
+  {
+    id: 8,
+    name: 'Aasif Nazir',
+    rating: 5,
+    date: 'October 2025',
+    review:
+      'I truly appreciate the support and guidance you provided throughout my physiotherapy sessions. You consistently demonstrated professionalism, patience, and a positive attitude.',
+    verified: true,
+  },
+  {
+    id: 9,
+    name: 'Zahoor Ahmad Bhat',
+    rating: 5,
+    date: 'September 2025',
+    review:
+      'Absolutely result-oriented physiotherapy consultant and intervention. Highly thankful.',
+    verified: true,
+  },
+  {
+    id: 10,
+    name: 'Rukaya Jaan',
+    rating: 5,
+    date: 'September 2025',
+    review:
+      'The physiotherapist explains the exercises very well, and because of those exercises my condition has improved a lot. The physiotherapy she gave me was very good and outstanding.',
+    verified: true,
+  },
+  {
+    id: 11,
+    name: 'Salma Qadir',
+    rating: 5,
+    date: 'September 2025',
+    review:
+      'The physiotherapy sessions have been really effective. The professionalism and the personal attention you give is worth it.',
+    verified: true,
+  },
+  {
+    id: 12,
+    name: 'Munir Ahmad',
+    rating: 5,
+    date: 'September 2025',
+    review:
+      'From reception to treatment, the entire experience was seamless and professional. The team is passionate about what they do, and it shows.',
+    verified: true,
+  },
+  {
+    id: 13,
+    name: 'Hamaad Hameem',
+    rating: 5,
+    date: 'September 2025',
+    review:
+      'Experience was amazing! Doctor was really caring and respectful. Just what you want when you are in pain. Really would recommend a visit.',
+    verified: true,
+  },
+  {
+    id: 14,
+    name: 'shahid sufi',
+    rating: 5,
+    date: 'September 2025',
+    review:
+      "Dr Majid and Dr Shazia are outstanding physiotherapists. Their professional approach, deep knowledge, and genuine care make the recovery journey smooth and effective. They take the time to understand each patient's needs, provide personalised treatment, and create a comfortable, friendly environment.",
     verified: true,
   },
 ];
+
+function getInitials(name: string) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  const first = parts[0]?.charAt(0) ?? '';
+  const last = parts.length > 1 ? parts[parts.length - 1].charAt(0) : '';
+  return (first + last).toUpperCase();
+}
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -198,13 +265,17 @@ export default function Reviews() {
               {/* Header */}
               <div className="flex items-start gap-3">
                 <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0"
+                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{
                     background: 'rgba(255,184,0,0.15)',
                     border: '2px solid rgba(255,184,0,0.3)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-poppins)',
+                    fontSize: '15px',
+                    fontWeight: 700,
                   }}
                 >
-                  {review.avatar}
+                  {getInitials(review.name)}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
@@ -229,16 +300,6 @@ export default function Reviews() {
                   </div>
                   <StarRating rating={review.rating} />
                   <div className="flex items-center gap-2 mt-1">
-                    <span
-                      className="text-xs px-2 py-0.5 rounded-full"
-                      style={{
-                        background: 'rgba(10,132,255,0.1)',
-                        color: '#0A84FF',
-                        fontWeight: 500,
-                      }}
-                    >
-                      {review.treatment}
-                    </span>
                     <span style={{ color: 'var(--text-muted)', fontSize: '11px' }}>
                       {review.date}
                     </span>
