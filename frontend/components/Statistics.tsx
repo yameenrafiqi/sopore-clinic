@@ -71,7 +71,7 @@ function StatCard({
   return (
     <motion.div
       ref={ref}
-      className="glass-card p-8 flex flex-col gap-4 relative overflow-hidden group"
+      className="glass-card p-5 sm:p-8 flex flex-col gap-4 relative overflow-hidden group"
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}

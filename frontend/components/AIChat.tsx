@@ -145,6 +145,7 @@ export default function AIChat() {
       <AnimatePresence>
         {!isOpen && (
           <motion.div
+            className="ai-chat-hint"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
@@ -240,7 +241,6 @@ export default function AIChat() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            style={{ bottom: '230px' }}
           >
             {/* Chat header */}
             <div
@@ -261,10 +261,19 @@ export default function AIChat() {
                   Ask about symptoms or treatments
                 </p>
               </div>
-              <div
-                className="ml-auto w-2 h-2 rounded-full"
-                style={{ background: '#34c759', boxShadow: '0 0 6px #34c759' }}
-              />
+              <div className="ml-auto flex items-center gap-3">
+                <div
+                  className="w-2 h-2 rounded-full"
+                  style={{ background: '#34c759', boxShadow: '0 0 6px #34c759' }}
+                />
+                <button
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close chat"
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.85)', cursor: 'pointer', padding: '4px' }}
+                >
+                  <X size={18} />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}

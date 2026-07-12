@@ -186,15 +186,17 @@ export default function Navbar() {
               </a>
 
               {/* Book Appointment CTA */}
-              <motion.button
-                className="hidden md:flex btn-primary text-sm px-5 py-2.5"
-                onClick={() => scrollTo('#booking')}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <Calendar size={15} />
-                Book Appointment
-              </motion.button>
+              <div className="hidden md:block">
+                <motion.button
+                  className="btn-primary text-sm px-5 py-2.5"
+                  onClick={() => scrollTo('#booking')}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <Calendar size={15} />
+                  Book Appointment
+                </motion.button>
+              </div>
 
               {/* Mobile menu toggle */}
               <button
@@ -228,7 +230,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-[1100] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -243,7 +245,7 @@ export default function Navbar() {
 
             {/* Slide panel */}
             <motion.div
-              className="absolute top-0 right-0 bottom-0 w-80 flex flex-col"
+              className="absolute top-0 right-0 bottom-0 w-[300px] max-w-[85vw] flex flex-col"
               style={{
                 background: '#ffffff',
                 borderLeft: '1px solid var(--border)',

@@ -134,7 +134,7 @@ export default function Hero() {
               ref={titleRef}
               className="mb-4"
               style={{
-                fontSize: 'clamp(36px, 5.5vw, 72px)',
+                fontSize: 'clamp(29px, 6.5vw, 72px)',
                 fontFamily: 'var(--font-poppins)',
                 fontWeight: 800,
                 lineHeight: 1.1,
@@ -179,9 +179,9 @@ export default function Hero() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 items-center mb-16">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 items-stretch sm:items-center mb-10 sm:mb-16">
               <motion.button
-                className="hero-cta btn-primary text-base px-8 py-4"
+                className="hero-cta btn-primary text-base w-full sm:w-auto px-6 py-3.5"
                 style={{ opacity: 0 }}
                 onClick={() => scrollTo('booking')}
                 whileHover={{ scale: 1.04 }}
@@ -192,7 +192,7 @@ export default function Hero() {
               </motion.button>
 
               <motion.button
-                className="hero-cta btn-outline text-base px-8 py-4"
+                className="hero-cta btn-outline text-base w-full sm:w-auto px-6 py-3.5"
                 style={{ opacity: 0 }}
                 onClick={() => scrollTo('treatments')}
                 whileHover={{
@@ -208,7 +208,7 @@ export default function Hero() {
             </div>
 
             {/* Trust indicators */}
-            <div className="hero-cta flex flex-wrap gap-6 items-center" style={{ opacity: 0 }} suppressHydrationWarning>
+            <div className="hero-cta flex flex-wrap gap-x-5 gap-y-3 sm:gap-6 items-center" style={{ opacity: 0 }} suppressHydrationWarning>
               {[
                 { value: '30,000+', label: 'Patients Treated' },
                 { value: '4.9★', label: 'Google Rating' },

@@ -196,7 +196,7 @@ export default function Treatments() {
         {/* Search + Filter */}
         <div className="flex flex-col sm:flex-row gap-4 mb-10 items-start sm:items-center justify-between">
           {/* Search */}
-          <div className="relative">
+          <div className="relative w-full sm:w-auto">
             <Search
               size={16}
               className="absolute left-4 top-1/2 -translate-y-1/2"
@@ -207,7 +207,7 @@ export default function Treatments() {
               placeholder="Search treatments..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="form-input w-72"
+              className="form-input w-full sm:w-72 max-w-full"
               style={{ paddingLeft: '44px' }}
             />
           </div>

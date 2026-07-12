@@ -42,7 +42,7 @@ export default function HomePage() {
 
       {/* Announcement banner + Navbar stacked in a single fixed container so the
           banner never overlaps the nav — they flow vertically together */}
-      <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
+      <div className="fixed top-0 left-0 right-0 z-[1100] flex flex-col">
         <AnnouncementBanner />
         <Navbar />
       </div>

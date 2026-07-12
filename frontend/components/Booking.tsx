@@ -209,7 +209,7 @@ export default function Booking() {
           ) : (
             /* Booking form */
             <motion.div
-              className="rounded-3xl p-8 md:p-10"
+              className="rounded-3xl p-5 sm:p-8 md:p-10"
               style={{
                 background: 'white',
                 border: '1px solid var(--border)',

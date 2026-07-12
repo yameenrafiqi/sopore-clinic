@@ -204,7 +204,7 @@ export default function Reviews() {
 
         {/* Overall rating card */}
         <motion.div
-          className="glass-card p-8 mb-12 max-w-md mx-auto text-center"
+          className="glass-card p-6 sm:p-8 mb-12 max-w-md mx-auto text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
